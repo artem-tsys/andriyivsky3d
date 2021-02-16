@@ -143,7 +143,8 @@ class AppModel extends EventEmitter {
       flat = this.getFlat(id);
     }
 
-    if (!_.has(obj, 's3d_type') || !hasCorrectPage || obj['s3d_type'] === 'favourites') {
+    if (!_.has(obj, 's3d_type') || !hasCorrectPage) {
+    // if (!_.has(obj, 's3d_type') || !hasCorrectPage || obj['s3d_type'] === 'favourites') {
       conf['type'] = 'flyby';
       conf['flyby'] = '1';
       conf['side'] = 'outside';

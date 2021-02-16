@@ -10,10 +10,11 @@
     width: 100%;
     height: 100%;
     background: transparent;
-    grid-template-rows: var(--header-height) auto auto 1fr auto auto;
+    grid-template-rows: var(--header-height) 35px auto auto 1fr auto auto;
     grid-template-columns: 200px 226px 1fr 1fr 1fr ;
     pointer-events: none;
     grid-template-areas: '. . back . . .'
+                '. . . . . .'
                 'filter filter . . . favourite'
                 'compass . . . . .'
                 '. . . . . .'
@@ -288,12 +289,12 @@
       svg {
         width: 13px;
         height: 14px;
-        fill: $color2;
+        fill: $color1;
         transition: fill 0.4s ease-in-out;
       }
       &:hover {
         svg {
-          fill: $color1;
+          fill: $color2;
         }
       }
     }
@@ -307,18 +308,25 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 1em;
-      color: #E1DDD2;
+      color: $color1;
       cursor: pointer;
       pointer-events: painted;
+      transition: color 0.4s ease-in;
       z-index: 5;
       svg {
+        stroke: $color1;
         margin: 0 10px;
+        transition: stroke 0.4s ease-in;
       }
       path {
         transform: translateX(30%);
         transition: transform 0.4s ease-in-out;
       }
       &:hover{
+        color: $color2;
+        svg {
+          stroke: $color2;
+        }
         path {
           transform: translateX(0);
         }
@@ -335,7 +343,7 @@
       font-size: 14px;
       color: $color1;
       line-height: 1em;
-      margin: auto 50px 0 auto;
+      margin: 0 50px auto auto;
       cursor: pointer;
       transition: color 0.3s ease-in;
       pointer-events: painted;
@@ -388,8 +396,7 @@
         fill: $color1;
         transition: transform 0.4s ease-in-out;
       }
-      &:hover{
-        //color: $color2;
+      &:hover {
         svg {
           transform: scale(1.2);
         }

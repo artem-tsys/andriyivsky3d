@@ -204,6 +204,7 @@ class SliderModel extends EventEmitter {
   firstLoadImage() {
     this.isRotating$.next(true);
     this.preloader.turnOn(this.wrapper.find('.s3d__button'));
+    $('.fs-preloader-precent').addClass('s3d-show');
     this.ctx.canvas.width = this.width;
     this.ctx.canvas.height = this.height;
     const self = this;
@@ -247,6 +248,7 @@ class SliderModel extends EventEmitter {
         if (self.activeFlat) {
           self.emit('changeFlatActive', self.hoverFlatId$.value);
           self.infoBox.changeState('active', self.getFlat(self.activeFlat));
+          $('.fs-preloader-precent').removeClass('s3d-show');
         }
 
         return index;

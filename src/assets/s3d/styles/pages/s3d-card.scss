@@ -6,14 +6,16 @@
     flex: 1 1 auto;
     transition: box-shadow .5s ease-out;
     z-index: 999;
-    &:hover{
-      .s3d-card__top,
-      .s3d-card__middle,
-      .s3d-card__bottom {
-        border-color: $color2;
-      }
+    background: #ffffff;
+    border: 1px solid #E6EAEE;
+    //&:hover{
+    //  .s3d-card__top,
+    //  .s3d-card__middle,
+    //  .s3d-card__bottom {
+    //    border-color: $color2;
+    //  }
       //box-shadow: 0 4px 20px rgba(12, 13, 13, 0.2);
-    }
+    //}
     &__top {
       position: relative;
       display: flex;
@@ -21,41 +23,19 @@
       align-content: center;
       justify-content: center;
       flex: 1 1 auto;
-      border: 2px solid #006164;
-      border-left: none;
-      padding: 35px 25px;
-      transition: border-color 0.3s ease-in;
+      padding: 25px 35px;
     }
 
     &__middle {
       display: inline-block;
-      height: 10px;
+      height: 0;
       width: 100%;
-      border-left: 2px solid #006164;
-      transition: border-color 0.3s ease-in;
+      border-bottom: 1px solid #E6EAEE;
     }
 
     &__bottom {
       width: 100%;
-      padding: 30px;
-      border: 2px solid #006164;
-      border-left: none;
-      transition: border-color 0.3s ease-in;
-    }
-    &__icon{
-      display: flex;
-      width: 52px;
-      height: 52px;
-      flex: 0 0 52px;
-      justify-content: center;
-      align-items: center;
-
-      background: $color1;
-      svg{
-        width: 18px;
-        height: 16px;
-        fill: #FFFFFF;
-      }
+      padding: 25px 25px 25px 40px;
     }
     &__text{
       display: flex;
@@ -88,7 +68,7 @@
         content: "";
         width: 60%;
         height: 2px;
-        background: $color2;
+        background: $color1;
         transform: translate(-50%,-50%)rotate(45deg);
       }
       &:before{
@@ -98,7 +78,7 @@
         content: "";
         width: 60%;
         height: 2px;
-        background: $color2;
+        background: $color1;
         transform: translate(-50%,-50%)rotate(-45deg);
       }
       &:hover{
@@ -134,7 +114,7 @@
       justify-content: center;
       align-items: center;
 
-      background: #E1DDD2;
+      background: #E6EAEE;
       font-family: $default-font;
       font-weight: 500;
       font-size: 10px;
@@ -159,9 +139,9 @@
         padding: 0;
         font-family: $default-font;
         font-weight: 500;
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.7em;
-        color: #E1DDD2;
+        color: #6F7A84;
         text-align: left;
       }
 
@@ -174,7 +154,7 @@
       position: relative;
       display: flex;
       overflow: hidden;
-      margin: 15px 0 0;
+      margin: 20px 0 0;
       padding: 0;
       z-index: 7;
       order: 3;
@@ -186,7 +166,8 @@
       display: flex;
       margin: 0;
       padding: 0;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: flex-start;
       border: none;
       font-family: $default-font;
@@ -196,24 +177,24 @@
       letter-spacing: -0.05em;
       text-transform: capitalize;
       text-decoration: none;
-      color: #FFFFFF;
+      color: #000000;
       background: transparent;
       cursor: pointer;
       overflow: hidden;
       pointer-events: painted;
       z-index: 1;
       svg {
-        margin-left: 10px;
-        path {
-          transition: transform 0.4s ease-in-out;
-          transform: translate(-60%);
-        }
+        fill: #000000;
+        //path {
+        //  transition: transform 0.4s ease-in-out;
+        //  transform: translate(-60%);
+        //}
       }
-      &:hover {
-        path {
-          transform: translate(0, 0);
-        }
-      }
+      //&:hover {
+      //  path {
+      //    transform: translate(0, 0);
+      //  }
+      //}
     }
     &__add-favourites{
       position: absolute;
@@ -234,26 +215,26 @@
         display: none;
       }
       input:checked + svg{
-        fill: #FFFFFF;
+        fill: $color1;
         stroke: transparent;
       }
       svg{
         height: 45%;
         width: 45%;
         fill: transparent;
-        stroke: #FFFFFF;
-        stroke-width: 2px;
+        stroke: $color1;
+        stroke-width: 1px;
         pointer-events: none;
         transition: stroke .3s ease-out, fill .3s ease-out;
       }
       &:hover{
         box-shadow: 0 4px 15px rgba(122, 65, 56, 0.3);
         svg{
-          fill: #FFFFFF;
+          fill: $color1;
         }
-        & input:checked + svg{
-          fill: #FFFFFF;
-        }
+        //& input:checked + svg{
+          //fill: #FFFFFF;
+        //}
       }
     }
   }

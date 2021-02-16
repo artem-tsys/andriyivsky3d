@@ -122,13 +122,17 @@ class FavouritesModel extends EventEmitter {
   }
 
   openFavouritesHandler() {
+    this.updateFavouritesBlock();
+    this.history.update({ type: 'favourites', method: 'general' });
+    this.updateFsm({ type: 'favourites', method: 'general' }, this);
+  }
+
+  updateFavouritesBlock() {
     this.emit('clearAllHtmlTag', '.js-s3d-fv__list .js-s3d-card');
     const favourites = this.getFavourites();
     this.emit('updateFavouriteAmount', favourites.length);
     const html = favourites.map(el => this.createElemHtml(this.getFlat(el)));
     this.emit('setInPageHtml', html);
-    this.history.update({ type: 'favourites', method: 'general' });
-    this.updateFsm({ type: 'favourites', method: 'general' }, this);
   }
 
   addFavouritesHandler(event, id) {
@@ -157,6 +161,7 @@ class FavouritesModel extends EventEmitter {
     div.querySelector('[data-key="rooms"]').innerHTML = el.rooms;
     div.querySelector('[data-key="area"]').innerHTML = el['all_room'];
     div.querySelector('[data-key="src"]').src = el['img_small'];
+    div.querySelector('.js-s3d-add__favourites input').checked = true;
 
     return div;
   }
