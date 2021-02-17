@@ -2,10 +2,11 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: 70px 35px 75px 0;
+  padding: 30px 20px 25px 20px;
   width: 235px;
   top: 0;
   left: 0;
+  border: 1px solid rgba(230, 234, 238, 0.4);
   transition: transform 0.4s ease-in, top 0.4s ease-in, left 0.4s ease-in, bottom 0.4s ease-in, right 0.4s ease-in;
   z-index: 5;
   &__wrap {
@@ -222,7 +223,7 @@
   }
 
   &[data-step='0'] {
-    top: calc(var(--header-height) + 20px);
+    top: calc(var(--header-height) + 20px + 35px + 20px);
     left: 358px;
     .s3d__helper__arrow {
       left: 0;

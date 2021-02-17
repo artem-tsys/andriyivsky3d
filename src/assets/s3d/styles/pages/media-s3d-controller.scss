@@ -31,6 +31,7 @@
 @media screen and (max-width: 1440px) {
   .s3d {
     &-ctr{
+      grid-template-rows: var(--header-height) 20px auto auto 1fr auto auto;
       //grid-gap: 20px;
       //grid-template-columns: 200px 226px 1fr 1fr 1fr;
       &__compass {
@@ -51,6 +52,13 @@
         font-size: 30px;
       }
       &__open {
+        &-filter {
+          height: 50px;
+          &__icon {
+            height: 50px;
+            width: 50px;
+          }
+        }
         &-helper {
           &--text {
             font-size: 12px;

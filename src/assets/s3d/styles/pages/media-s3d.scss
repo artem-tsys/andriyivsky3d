@@ -6,6 +6,12 @@
       }
     }
   }
+  .header {
+    &__logo {
+      width: 230px;
+      margin: 0 270px 0 50px;
+    }
+  }
 }
 
 @media screen and (max-width: 992px) {

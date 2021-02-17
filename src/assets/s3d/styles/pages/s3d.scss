@@ -236,7 +236,21 @@
   }
 }
 
+.header {
+  pointer-events: none;
+  &__logo {
+    width: 300px;
+    max-width: none;
+    margin: 0 270px 0 50px;
+  }
 
+  a, button {
+    pointer-events: painted;
+  }
+}
+.lang-block {
+  margin: 0 auto;
+}
 .translate-layer{
   z-index: 600;
   position: absolute;
@@ -404,6 +418,9 @@ sub{
   font-size: 0.7em;
 }
 
+.page__footer-wrapper {
+  display: none;
+}
 //.header__s3d:not(.big){
 //  padding: 10px 0;
 //  background: rgba(244, 244, 242, 0.5);

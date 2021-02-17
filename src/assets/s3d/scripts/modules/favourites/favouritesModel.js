@@ -240,7 +240,7 @@ class FavouritesModel extends EventEmitter {
 			height:${animatingElParams.height}px;
 			transform-origin:top left;`;
     curElem.style.cssText += `
-			fill: #CFBE97;
+			fill: #405174;
 			position:relative;
 			z-index:2000;
 			stroke:none;

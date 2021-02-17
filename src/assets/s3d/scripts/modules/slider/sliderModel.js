@@ -45,7 +45,7 @@ class SliderModel extends EventEmitter {
     this.pret = 0;
     this.amountSlideForChange = 0;
     this.arrayImages = [];
-    this.mouseSpeed = config.mouseSpeed;
+    this.rotateSpeed = config.rotateSpeed;
     this.nearestControlPoint = {
       min: config.numberSlide.min,
       max: config.numberSlide.max,
@@ -369,7 +369,7 @@ class SliderModel extends EventEmitter {
         this.isRotating$.next(false);
         this.amountSlideForChange = 0;
       }
-    }, 18);
+    }, this.rotateSpeed);
   }
 
   showDifferentPointWithoutRotate(arrayIdNewPoint, flatId) {
@@ -483,7 +483,7 @@ class SliderModel extends EventEmitter {
   checkMouseMovement(e) {
     // get amount slide from a touch event
     this.x = e.pageX || e.targetTouches[0].pageX;
-    this.amountSlideForChange += +((this.x - this.pret) / (window.innerWidth / this.numberSlide.max / this.mouseSpeed)).toFixed(0);
+    this.amountSlideForChange += +((this.x - this.pret) / (window.innerWidth / this.numberSlide.max)).toFixed(0);
   }
 
   rewindToPoint(controlPoint) {

@@ -41,16 +41,18 @@
       left: 0;
       right: 0;
       pointer-events: none;
-      height: 15vh;
+      height: 20vh;
       width: 100%;
       z-index: 155;
       &-top{
         top: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 33.33%, rgba(255, 255, 255, 0) 100%);
+        //background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
       }
       &-bottom{
         bottom: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+        //background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
       }
     }
   }

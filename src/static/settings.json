@@ -8,35 +8,15 @@
         "class": "js-s3d__wrapper",
         "numberSlide": {
           "min": 0,
-          "max": 119
+          "max": 179
         },
         "controlPoint": [
-          29,
-          60,
-          88,
-          117
+          31,
+          96,
+          156
         ],
-        "activeSlide": 29,
-        "mouseSpeed": 1,
-        "startDegCompass": 28
-      },
-      "inside": {
-        "id": "flyby_1_inside",
-        "generalWrapId": "#js-s3d__wrapper",
-        "imageUrl": "images/flyby/1/inside/",
-        "class": "js-s3d__wrapper",
-        "numberSlide": {
-          "min": 0,
-          "max": 119
-        },
-        "controlPoint": [
-          12,
-          42,
-          72,
-          108
-        ],
-        "activeSlide": 12,
-        "mouseSpeed": 1,
+        "activeSlide": 31,
+        "rotateSpeed": 20,
         "startDegCompass": 28
       }
     }
