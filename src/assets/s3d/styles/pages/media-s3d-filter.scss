@@ -37,9 +37,6 @@
     &-filter {
       &-wrap {
         width: 360px;
-        .s3d__favourites {
-          right: 20px;
-        }
       }
       &__top {
         padding: calc(var(--header-height) + 15px) 20px 30px;
@@ -52,9 +49,13 @@
   .s3d {
     &-filter {
       flex: 1 1 100%;
-      width: auto;
+      //width: auto;
       padding: 0;
-
+      &-wrap {
+        .s3d__favourites {
+          margin: 0 0 0 40px;
+        }
+      }
       &__button{
         &--reset {
           &-icon {
@@ -160,9 +161,6 @@
     &-filter {
       &-wrap {
         width: 100%;
-        .s3d__favourites {
-          right: 15px;
-        }
       }
       &__title {
         line-height: 1.5em;
@@ -170,7 +168,7 @@
       &__top {
         padding: calc(var(--header-height) + 15px) 15px 23px;
         .s3d__favourites {
-          margin: 0 0 0 10px;
+          margin: 0 0 0 15px;
         }
       }
       &__head {

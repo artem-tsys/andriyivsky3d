@@ -1,3 +1,18 @@
+@media screen and (min-width: 1440px) {
+  .s3d {
+    &-flat {
+      &__callback {
+        &1{
+          display: none;
+        }
+        &2{
+          margin: 0 auto!important;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 1440px) {
   .s3d {
     &-flat {
@@ -13,14 +28,27 @@
       &__mini-info {
         padding: 15px 0;
       }
+      &__title{
+        font-size: 30px;
+      }
+      &__table {
+        padding: 0 50px;
+      }
+      &__left {
+        &-buttons {
+          width: calc(100% - 160px);
+          margin: auto 0 0 160px;
+        }
+      }
       &__list {
         padding: 17px 30px 17px 0;
       }
       &__el {
         padding: 8px 0;
+        font-size: 12px;
       }
       &__callback {
-        max-width: 236px;
+        //max-width: 236px;
       }
       &__compass {
         height: 64px;
@@ -29,6 +57,17 @@
       }
       &__pdf {
         margin: 0;
+      }
+      &__show-3d {
+        font-size: 12px;
+      }
+      &__like {
+        font-size: 12px;
+      }
+    }
+    &-mini-info {
+      &__amount {
+        font-size: 30px;
       }
     }
   }
@@ -107,6 +146,10 @@
         height: calc(var(--vh, 1vh) * 100 - 50px);
         width: 255px;
         padding: var(--header-height) 0 0 0;
+        &-buttons {
+          margin: 0;
+          width: 100%;
+        }
       }
       &__links {
         padding: 20px 0 0 20px;
@@ -185,7 +228,7 @@
         height: 40px;
         width: 40px;
         margin: auto 0 0 auto;
-        background: $color1;
+        background: $color2;
         &--text {
           display: none;
         }
@@ -250,15 +293,21 @@
         flex-direction: row;
         flex-wrap: wrap;
         background: none;
+        &-buttons {
+          margin: 25px 0 0 0;
+        }
       }
-      &__pdf {
-        margin: auto auto auto 0;
-      }
+      //&__pdf {
+      //  margin: auto auto auto 0;
+      //}
       &__compass {
         order: 3;
       }
       &__right {
 
+      }
+      &__show-3d path{
+        transform: none;
       }
       &__mini-info {
         padding: 20px 35px;
@@ -274,6 +323,5 @@
         margin: 0;
       }
     }
-
   }
 }

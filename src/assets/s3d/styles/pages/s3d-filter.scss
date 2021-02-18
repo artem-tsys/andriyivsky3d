@@ -57,21 +57,23 @@
         transition: none;
       }
       .s3d__favourites {
-        position: absolute;
-        top: calc(var(--header-height) +  40px);
-        right: 50px;
+        margin: 0 0 0 auto;
+      //  position: absolute;
+      //  top: calc(var(--header-height) +  40px);
+      //  right: 50px;
       }
     }
 
     &__title {
-      position: relative;
+      display: flex;
+      width: 100%;
       color: $color1;
       letter-spacing: -0.05em;
       font-size: 20px;
       font-weight: 500;
       line-height: 1em;
       font-family: $default-font;
-      margin: 0 0 22px 0;
+      margin: 0;
     }
 
     &__top{
@@ -116,7 +118,7 @@
         transition: background-color .3s ease-in, color .3s ease-in;
 
         font-family: $default-font;
-        font-weight: 400;
+        font-weight: 500;
         font-size: 10px;
         line-height: 1em;
         color: $color1;
@@ -287,10 +289,10 @@
         background: #ffffff;
       }
       &:hover {
-        background: #E1DDD2;
+        background: #F1E0C5;
       }
       &.active-flat{
-        background: $color2;
+        background: #F1E0C5;
         color: #ffffff;
       }
     }
@@ -378,9 +380,12 @@
         transform: translateY(-50%);
       }
 
-      &:hover {
-        color: $color2;
-      }
+      //&:hover {
+      //  color: #F1E0C5;
+      //  &:after {
+      //    border-color: #F1E0C5;
+      //  }
+      //}
     }
     &__close {
       position: relative;
@@ -553,7 +558,7 @@
         justify-content: flex-start;
         justify-items: flex-start;
         flex: 0 1 25%;
-        padding: 10px 0;
+        padding: 9px 0;
         span {
           font-family: $default-font;
           font-weight: 500;
@@ -604,7 +609,7 @@
         cursor: pointer ;
       }
       .irs-from, .irs-to, .irs-single {
-        color: $color1;
+        color: $bc;
       }
       .irs-line {
         background: #C1C2C4;
@@ -634,7 +639,7 @@
       .s3d-filter {
         &__mini-info{
           opacity: 1;
-          height: 50px;
+          height: 42px;
           transition: height 0.25s ease-in .3s;
         }
         &__top {
@@ -673,7 +678,7 @@
       &__close-wrap{
         display: flex;
         &:hover {
-          transform: translate(100%, -50%);
+          transform: translate(calc(100% - 2px), -50%);
           .s3d-filter__close {
             transform: rotate(90deg);
           }

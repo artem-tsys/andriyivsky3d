@@ -17,11 +17,11 @@ class FlatView extends EventEmitter {
     // events handler form start
     $('.js-callback-form').on('click', e => {
       $('.overlay').show();
-      $('.callback-form__popup').addClass('callback-form__popup--show');
+      $('.phone-order-popup').addClass('active');
     });
-    $('.js-callback-form__close').on('click', e => {
+    $('.phone-order-popup__close-btn').on('click', e => {
       e.stopPropagation();
-      $('.callback-form').removeClass('callback-form__popup--show');
+      $('.phone-order-popup').removeClass('active');
 
       setTimeout(() => $('.overlay').hide(), 700);
     });
@@ -74,11 +74,12 @@ class FlatView extends EventEmitter {
     const {
       flat, id,
     } = data;
-    const wrap = $('.js-s3d__wrapper__apart');
+    const wrap = $('.js-s3d__wrapper__flat');
     wrap.find('.js-s3d-flat__image')[0].src = flat.img;
     wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img;
     wrap.find('.js-s3d-flat__table').html(flat['leftBlock']);
     wrap.find('.js-s3d-add__favourites')[0].dataset.id = id;
+    wrap.find('.js-s3d__create-pdf')[0].href = flat.pdf;
     $('polygon.u-svg-plan--active').removeClass('u-svg-plan--active');
     wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active');
   }

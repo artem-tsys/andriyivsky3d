@@ -53,8 +53,9 @@
         clip-path: polygon(0 0, calc(100% - 35px) 0, 100% 35px, 100% 100%, 0 100%);
         width: 100%;
         z-index: -1;
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(5px);
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(10px);
       }
     }
     &__compass {
@@ -66,13 +67,14 @@
       height: 110px;
       border-radius: 50%;
       fill: transparent;
+      padding: 10px;
       margin: 0 0 0 50px;
       background: rgba(241, 224, 197, 0.95);
       // default change from js
       visibility: hidden;
       svg {
-        width: 90px;
-        height: 90px;
+        max-width: 100%;
+        max-height: 100%;
         transform-origin: center;
       }
     }
@@ -86,7 +88,7 @@
       line-height: 1em;
       white-space: no-wrap;
       text-align: left;
-      letter-spacing: -0.05em;
+      text-transform: uppercase;
       color: #FFFFFF;
 
       // default change from js
@@ -119,6 +121,7 @@
         width: 100%;
         cursor: no-drop;
         color: $bc;
+        font-weight: 600;
         background: $color2;
         z-index: 5;
       }
@@ -185,6 +188,7 @@
           flex-wrap: wrap;
           padding: 0 25px;
           height: 100%;
+          text-align: left;
           font-family: $default-font;
           font-size: 14px;
           font-weight: 500;
@@ -278,7 +282,7 @@
           transition: transform 0.2s ease-in;
         }
         &--text {
-          color: #E1DDD2;
+          color: $wc;
           font-size: 14px;
           line-height: 1em;
           font-weight: 500;
@@ -340,10 +344,10 @@
         transition: transform 0.4s ease-in-out;
       }
       &:hover{
-        color: $color2;
-        svg {
-          stroke: $color2;
-        }
+        //color: $color2;
+        //svg {
+          //stroke: $color2;
+        //}
         path {
           transform: translateX(0);
         }
@@ -360,7 +364,7 @@
       font-size: 14px;
       color: $color1;
       line-height: 1em;
-      margin: 0 50px auto auto;
+      margin: 0 67px auto auto;
       cursor: pointer;
       transition: color 0.3s ease-in;
       pointer-events: painted;

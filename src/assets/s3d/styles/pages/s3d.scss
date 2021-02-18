@@ -237,15 +237,11 @@
 }
 
 .header {
-  pointer-events: none;
+  //pointer-events: none;
   &__logo {
     width: 300px;
     max-width: none;
     margin: 0 270px 0 50px;
-  }
-
-  a, button {
-    pointer-events: painted;
   }
 }
 .lang-block {
@@ -263,7 +259,7 @@
   height: auto;
   flex-direction: column;
   padding-top: 100vh;
-  background: #F4F4F2;
+  background: #000000;
   opacity: 0;
 
   &.translate-layer__up{
@@ -288,22 +284,22 @@
 
   &--2{
     height: 70vh;
-    background: #EEE9F0;
+    background: #405174;
   }
 
   &--3{
     height: 50vh;
-    background: #E4D7E9;
+    background: #5B758D;
   }
 
   &--4{
     height: 30vh;
-    background: #CDBAD3;
+    background: #6F7A84;
   }
 
   &--5{
     height: 20vh;
-    background: #B5A2BB;
+    background: #C1C2C4;
   }
 }
 

@@ -172,9 +172,8 @@
       border: none;
       font-family: $default-font;
       font-weight: 500;
-      font-size: 20px;
-      line-height: 1em;
-      letter-spacing: -0.05em;
+      font-size: 18px;
+      line-height: 1.3em;
       text-transform: capitalize;
       text-decoration: none;
       color: #000000;
@@ -184,6 +183,7 @@
       pointer-events: painted;
       z-index: 1;
       svg {
+        height: 6px;
         fill: #000000;
         //path {
         //  transition: transform 0.4s ease-in-out;

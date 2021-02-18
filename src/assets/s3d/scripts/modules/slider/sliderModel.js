@@ -161,9 +161,9 @@ class SliderModel extends EventEmitter {
   }
 
   init(id, slide) {
-    if (isDevice('ios')) {
-      this.mouseSpeed = 0.5;
-    }
+    // if (isDevice('ios')) {
+    //   this.mouseSpeed = 0.5;
+    // }
     if (id && slide && slide.length > 0) {
       this.activeElem = +slide[0];
       this.activeFlat = +id;
@@ -257,6 +257,7 @@ class SliderModel extends EventEmitter {
     };
 
     img.onerror = function (e) {
+      console.error(e)
       if (type === 'error') {
         self.sendResponsiveError(this, self);
       } else {
@@ -358,6 +359,7 @@ class SliderModel extends EventEmitter {
   // запускает callback (прокрутку слайда) пока активный слайд не совпадёт со следующим (выявленным заранее)
   repeatChangeSlide(fn, nextSlideId) {
     this.isRotating$.next(true);
+    const rotateSpeed = this.rotateSpeed;
     return setInterval(() => {
       fn();
       if (this.activeElem === nextSlideId) {
@@ -369,7 +371,7 @@ class SliderModel extends EventEmitter {
         this.isRotating$.next(false);
         this.amountSlideForChange = 0;
       }
-    }, this.rotateSpeed);
+    }, rotateSpeed);
   }
 
   showDifferentPointWithoutRotate(arrayIdNewPoint, flatId) {

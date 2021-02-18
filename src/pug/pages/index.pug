@@ -37,7 +37,7 @@ block content
             circle( cx="20.5" cy="18.5" r="2" fill="#405174" stroke="white")
             circle( cx="5.5" cy="10.5" r="2" fill="#405174" stroke="white")
         span.s3d-ctr__open-filter__text підбір за
-          b параметрами
+          | параметрами
       .s3d-ctr__compass.js-s3d-ctr__compass
         +svg('Compass')
       .s3d-ctr__elem.js-s3d-ctr__elem
@@ -147,12 +147,13 @@ block content
           span
           span
       .s3d-filter__top
-        .s3d-filter__title Подбор по параметрам
-        .s3d__favourites.js-s3d__favourites.js-s3d-favorite__wrap.s3d-hidden
-          span.s3d__favourites-amount.js-s3d-favourites-amount 0
-          .js-s3d__favourites-icon
-            svg( role="presentation")
-              use( xlink:href="#icon-favourites")
+        .s3d-filter__title
+          span  Подбор по параметрам
+          .s3d__favourites.js-s3d__favourites.js-s3d-favorite__wrap.s3d-hidden
+            span.s3d__favourites-amount.js-s3d-favourites-amount 0
+            .js-s3d__favourites-icon
+              svg( role="presentation")
+                use( xlink:href="#icon-favourites")
         .s3d-filter
           .s3d-filter__floor.js-s3d-filter__floor
             .s3d-filter-select__title Поверх

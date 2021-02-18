@@ -1,20 +1,20 @@
 <?php
 echo json_encode('<div class="s3d-flat js-s3d-flat">
         <div class="s3d-flat__left">
-          <div class="s3d-flat__table">
+          <div class="s3d-flat__table js-s3d-flat__table">
             <div class="s3d-flat__mini-info">
               <div class="s3d-mini-info">
-                <div class="s3d-mini-info__title">номер</div>
+                <div class="s3d-mini-info__title">номер:</div>
                 <div class="s3d-mini-info__amount ">54</div>
               </div>
               <div class="s3d-mini-info-line"></div>
               <div class="s3d-mini-info">
-                <div class="s3d-mini-info__title">Этаж</div>
+                <div class="s3d-mini-info__title">Этаж:</div>
                 <div class="s3d-mini-info__amount">6</div>
               </div>
               <div class="s3d-mini-info-line"></div>
               <div class="s3d-mini-info">
-                <div class="s3d-mini-info__title">комнат</div>
+                <div class="s3d-mini-info__title">комнат:</div>
                 <div class="s3d-mini-info__amount">1</div>
               </div>
             </div>
@@ -142,14 +142,14 @@ echo json_encode('<div class="s3d-flat js-s3d-flat">
           </label>
         </div>
 		<div class="s3d-flat__callback-wrap">
-		    <button type="button" class="s3d-flat__callback js-callback-form">
+		    <button type="button" class="s3d-flat__callback s3d-flat__callback1 js-callback-form">
 		        Связаться с менеджером
                 <svg viewBox="0 0 180 6" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 2.33887H177.632V3.33887H0V2.33887Z" />
                   <path d="M177.632 5.33887V0.338867L180 2.83887L177.632 5.33887Z"/>
                 </svg>
             </button>
-		    <button type="button" class="s3d-flat__callback js-callback-form">
+		    <button type="button" class="s3d-flat__callback s3d-flat__callback2 js-callback-form">
 		        Заявка на бронь
                 <svg viewBox="0 0 180 6" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 2.33887H177.632V3.33887H0V2.33887Z" />

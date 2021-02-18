@@ -205,17 +205,19 @@
     }
 
   }
-  &__active {
+  &__active:not(.s3d-active) {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 0;
+    pointer-events: none!important;
     * {
       visibility: visible;
       opacity: 1;
       overflow: visible;
+      pointer-events: none!important;
     }
     & > * {
       margin: 0!important;
@@ -233,7 +235,7 @@
   }
   &[data-step='1'] {
     top: calc(100% - 50px);
-    left: 222px;
+    left: 245px;
     transform: translate(0, -100%);
     .s3d__helper__arrow {
       left: 0;
