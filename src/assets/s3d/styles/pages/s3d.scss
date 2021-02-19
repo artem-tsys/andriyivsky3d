@@ -237,11 +237,8 @@
 }
 
 .header {
-  //pointer-events: none;
-  &__logo {
-    width: 300px;
-    max-width: none;
-    margin: 0 270px 0 50px;
+  &__inner {
+    //height: var(--header-height);
   }
 }
 .lang-block {
@@ -303,16 +300,15 @@
   }
 }
 
-
 @keyframes s3dAnimateArrowHelper {
   from{
-    transform: translateX(-70%);
+    transform: translateX(-10%);
   }
   50% {
     transform: translateX(0);
   }
   to {
-    transform: translateX(-70%);
+    transform: translateX(-10%);
   }
 }
 

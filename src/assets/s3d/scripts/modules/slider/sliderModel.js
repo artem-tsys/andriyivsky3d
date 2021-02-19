@@ -207,6 +207,7 @@ class SliderModel extends EventEmitter {
     $('.fs-preloader-precent').addClass('s3d-show');
     this.ctx.canvas.width = this.width;
     this.ctx.canvas.height = this.height;
+    console.log('firstLoadImage', this.arrayImages)
     const self = this;
     const img = new Image();
     const index = this.activeElem;
@@ -233,6 +234,7 @@ class SliderModel extends EventEmitter {
     img.dataset.id = index;
     img.onload = function load() {
       self.arrayImages[index] = this;
+      console.log('loadImage', i, img.src)
       self.progressBarUpdate();
       if (index === self.numberSlide.max) {
         self.resizeCanvas();

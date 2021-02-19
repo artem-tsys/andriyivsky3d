@@ -36,10 +36,10 @@
           </table>
           <div class="s3d-card__buttons">
              <button type="button" class="s3d-card__link js-s3d-card__link">Детальніше
-                <svg width="180" height="6" viewBox="0 0 180 6" preserveAspectRatio="xMidYMid meet" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 2.33887H177.632V3.33887H0V2.33887Z" />
-                  <path d="M177.632 5.33887V0.338867L180 2.83887L177.632 5.33887Z"/>
-                </svg>
+                <svg height="6" viewBox="0 0 493 5" preserveAspectRatio="xMaxYMid slice"  fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect y="2" width="490" height="1" fill="black"/>
+<path d="M490.105 5V0L493 2.5L490.105 5Z" fill="black"/>
+</svg>
              </button>
           </div>
       </div>

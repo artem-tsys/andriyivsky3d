@@ -1,3 +1,21 @@
+@media screen and (min-width: 992px) {
+  .header {
+    &__logo {
+      width: 230px;
+      margin: 0 270px 0 50px;
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header {
+    &__logo {
+      width: 300px;
+      max-width: none;
+      margin: 0 270px 0 50px;
+    }
+  }
+}
+
 @media screen and (max-width: 1440px) {
   .s3d__slideModule{
     .button-second {
@@ -6,12 +24,7 @@
       }
     }
   }
-  .header {
-    &__logo {
-      width: 230px;
-      margin: 0 270px 0 50px;
-    }
-  }
+
 }
 
 @media screen and (max-width: 992px) {

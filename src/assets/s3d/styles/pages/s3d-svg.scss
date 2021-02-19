@@ -38,15 +38,15 @@
       opacity: 0;
       cursor: pointer;
       &:hover:not(.active-flat) {
-        fill: $color2;
+        fill: $color1;
         opacity: .5;
       }
       &.active-selected {
-        fill: $color2;
-        opacity: .7;
+        fill: $wc;
+        opacity: .6;
       }
       &.active-flat {
-        fill: $color1;
+        fill: $color2;
         opacity: .7;
       }
     }

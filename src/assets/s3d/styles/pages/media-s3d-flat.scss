@@ -49,6 +49,7 @@
       }
       &__callback {
         //max-width: 236px;
+        font-size: 16px;
       }
       &__compass {
         height: 64px;
@@ -66,6 +67,9 @@
       }
     }
     &-mini-info {
+      &__title {
+        font-size: 12px;
+      }
       &__amount {
         font-size: 30px;
       }

@@ -481,7 +481,7 @@
         }
       }
       &:hover {
-        color: #ffffff;
+        color: $bc;
         //background: $color1;
         opacity: 0.9;
       }
@@ -512,18 +512,18 @@
         margin-right: 10px;
         transition: background-color .4s ease-in-out;
         svg{
-          width: 60%;
-          height: 60%;
+          width: 70%;
+          height: 70%;
           fill: $color1;
           transition: fill .4s ease-in-out;
         }
       }
 
       &:hover {
-        color: $color2;
+        color: $bc;
         .s3d-filter__button--reset-icon {
           svg{
-            fill: $color2;
+            fill: $bc;
           }
         }
       }
@@ -582,6 +582,7 @@
         border: none;
         font-family: $default-font;
         color: #F2F2F2;
+        outline-color: rgba(241,224,197,0.5);
         transition: color 0.3s ease-in;
         cursor: pointer;
       }
@@ -602,38 +603,41 @@
       object-position: bottom;
       margin: auto 0 0 0;
     }
-    .irs--flat {
-      width: 100%;
-      flex: 0 1 auto;
-      .from, .to {
-        cursor: pointer ;
+    .irs {
+      &--flat {
+        width: 100%;
+        flex: 0 1 auto;
+        .from, .to {
+          cursor: pointer ;
+        }
+        .irs-from, .irs-to, .irs-single {
+          color: $bc;
+        }
+        .irs-line {
+          background: #C1C2C4;
+        }
       }
-      .irs-from, .irs-to, .irs-single {
-        color: $bc;
+      &-bar {
+        background-color: $color1;
       }
-      .irs-line {
-        background: #C1C2C4;
+      &-handle {
+        background-color: $color1;
+      }
+      &--flat &-handle {
+        height: 12px;
+        width: 12px;
+      }
+      &--flat &-handle > i:first-child {
+        height: 10px;
+        width: 10px;
+        background: $wc;
+        transition: background-color 0.25s ease-in;
+      }
+      &-handle.state_hover > i:first-child, &-handle:hover > i:first-child {
+        background: $color1;
       }
     }
-    .irs-bar {
-      background-color: $color1;
-    }
-    .irs-handle {
-      background-color: $color1;
-    }
-    .irs--flat .irs-handle {
-      height: 12px;
-      width: 12px;
-    }
-    .irs--flat .irs-handle > i:first-child {
-      height: 10px;
-      width: 10px;
-      background: $wc;
-      transition: background-color 0.25s ease-in;
-    }
-    .irs-handle.state_hover > i:first-child, .irs-handle:hover > i:first-child {
-      background: $color1;
-    }
+
 
     &__scroll-active {
       .s3d-filter {

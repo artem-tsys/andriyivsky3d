@@ -239,7 +239,8 @@
         overflow: hidden;
         margin: 0;
         svg {
-          stroke: $bc;
+          height: 6px;
+          fill: $bc;
           transition: stroke 0.3s ease-in;
           animation: s3dAnimateArrowHelper 2.2s ease infinite;
         }
