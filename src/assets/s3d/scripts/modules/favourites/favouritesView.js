@@ -16,10 +16,11 @@ class FavouritesView extends EventEmitter {
     $('.js-s3d-fv').on('click', '.js-s3d-card__close', event => {
       this.emit('removeElement', event);
     });
-    $('.js-s3d-fv').on('click', '.js-s3d-card__link', event => {
+    // $('.js-s3d-fv').on('click', '.js-s3d-card__link', event => {
+    $('.js-s3d-fv').on('click', '.js-s3d-card', event => {
       this.emit('clickElementHandler', event);
     });
-
+    
     model.on('clearAllHtmlTag', tag => { this.clearHtml(tag); });
     model.on('updateFavouriteAmount', value => { this.updateAmount(value); });
     model.on('updateViewAmount', value => { this.viewAmountFavourites(value); });

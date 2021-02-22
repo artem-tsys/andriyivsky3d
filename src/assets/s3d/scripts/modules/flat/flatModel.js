@@ -18,6 +18,7 @@ class FlatModel extends EventEmitter {
     this.activeFlat = config.activeFlat;
     this.hoverFlatId$ = config.hoverFlatId$;
     this.getFavourites = config.getFavourites;
+    this.updateFavourites = config.updateFavourites;
     this.getFlat = config.getFlat;
     this.updateFsm = config.updateFsm;
     this.history = config.history;
@@ -26,6 +27,8 @@ class FlatModel extends EventEmitter {
 
     this.imagesType = '';
     this.imagesViewType = '';
+    
+    console.log(config);
   }
 
   init(config) {
@@ -34,7 +37,7 @@ class FlatModel extends EventEmitter {
     this.activeFlat = +config.flatId;
     // this.getPlane(config);
   }
-
+  
   createWrap() {
     // все 3 обертки нужны, без них на мобилке пропадает прокрутка и всё ломается
     const wrap1 = createMarkup('div', { class: `s3d__wrap js-s3d__wrapper__${this.type} s3d__wrapper__${this.type}` });// const wrap2 = createMarkup(conf.typeCreateBlock, { id: `js-s3d__${conf.id}` })
@@ -122,6 +125,7 @@ class FlatModel extends EventEmitter {
   }
 
   checkFavouriteApart() {
+    this.updateFavourites();
     const favourite = this.getFavourites();
     // if (favourite.length > 0) {
     //   $('.s3d-flat__favourites').removeClass('s3d-hidden');

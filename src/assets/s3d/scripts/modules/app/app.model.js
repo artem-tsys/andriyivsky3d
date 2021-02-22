@@ -24,7 +24,7 @@ class AppModel extends EventEmitter {
     super();
     this.config = data;
     this.generalWrapId = data.generalWrapId; // used for create wrapper slider
-
+    
     this.preloader = preloader();
     this.favourites = {};
     this.defaultFlybySettings = {};
@@ -281,30 +281,30 @@ class AppModel extends EventEmitter {
     this.checkFirstLoadState();
   }
 
-  // createStructureSvg() {
-  //   const flyby = {}
-  //   const conf = this.config.flyby
-  //   for (const num in conf) {
-  //     flyby[num] = {}
-  //     for (const side in conf[num]) {
-  //       const type = conf[num][side]
-  //       flyby[num][side] = {}
-  //       type.controlPoint.forEach(slide => {
-  //         flyby[num][side][slide] = []
-  //         $.ajax(`/wp-content/themes/${nameProject}/assets/s3d/images/svg/flyby/${num}/${side}/${slide}.svg`).then(responsive => {
-  //           // flyby[num][side][slide] =
-  //           const list = [...responsive.querySelectorAll('polygon')]
-  //           flyby[num][side][slide] = list.map(el => +el.dataset.id)
-  //           // console.log(flyby)
-  //         })
-  //       })
-  //     }
-  //   }
-  //   setTimeout(() => {
-  //     console.log(JSON.stringify(flyby))
-  //   }, 10000)
-  //
-  // }
+  // createSvgStructureFlats
+  createStructureSvg() {
+    const flyby = {}
+    const conf = this.config.flyby
+    for (const num in conf) {
+      flyby[num] = {}
+      for (const side in conf[num]) {
+        const type = conf[num][side]
+        flyby[num][side] = {}
+        type.controlPoint.forEach(slide => {
+          flyby[num][side][slide] = []
+          $.ajax(`/wp-content/themes/${nameProject}/assets/s3d/images/svg/flyby/${num}/${side}/${slide}.svg`).then(responsive => {
+            // flyby[num][side][slide] =
+            const list = [...responsive.querySelectorAll('polygon')]
+            flyby[num][side][slide] = list.map(el => +el.dataset.id)
+            // console.log(flyby)
+          });
+        });
+      }
+    }
+    setTimeout(() => {
+      console.log(JSON.stringify(flyby));
+    }, 10000);
+  }
 
   changePopupFlyby(config, id) {
     this.popupChangeFlyby.updateContent(id);
@@ -365,7 +365,11 @@ class AppModel extends EventEmitter {
   updateCurrentFilterFlatsId(value) {
     this.currentFilterFlatsId$.next(value);
   }
-
+  
+  updateFavourites() {
+    this.favourites.updateFavourites();
+  }
+  
   getFavourites() {
     if (_.has(this, 'favourites')) {
       return this.favourites.getFavourites();
@@ -412,6 +416,7 @@ class AppModel extends EventEmitter {
     config.compass = this.compass;
     config.updateFsm = this.updateFsm;
     config.getFavourites = this.getFavourites.bind(this);
+    config.updateFavourites = this.updateFavourites.bind(this);
     config.getFlat = this.getFlat;
     config.setFlat = this.setFlat;
     config.subject = this.subject;
@@ -557,13 +562,14 @@ class AppModel extends EventEmitter {
     // const setting = data
     const setting = this.fsm.settings;
     if (_.size(includes) === 0) {
-      return {
-        type: this.defaultFlybySettings.type || 'flyby',
-        flyby: this.defaultFlybySettings.flyby || 1,
-        side: this.defaultFlybySettings.side || 'outside',
-        method: 'general',
-        change: false,
-      };
+      return null;
+      // return {
+      //   type: this.defaultFlybySettings.type || 'flyby',
+      //   flyby: this.defaultFlybySettings.flyby || 1,
+      //   side: this.defaultFlybySettings.side || 'outside',
+      //   method: 'general',
+      //   change: false,
+      // };
     }
 
     if (_.has(includes, [data.flyby, data.side])) {

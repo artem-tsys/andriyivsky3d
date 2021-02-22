@@ -15,23 +15,33 @@ class FlatView extends EventEmitter {
     });
 
     // events handler form start
+  
     $('.js-callback-form').on('click', e => {
-      $('.overlay').show();
-      $('.phone-order-popup').addClass('active');
+     e.preventDefault();
+      $('.js-phone-order-popup').addClass('active');
     });
-    $('.phone-order-popup__close-btn').on('click', e => {
-      e.stopPropagation();
-      $('.phone-order-popup').removeClass('active');
-
-      setTimeout(() => $('.overlay').hide(), 700);
+    $('.close-btn').on('click', e => {
+     e.preventDefault();
+      $('.js-phone-order-popup').removeClass('active');
     });
+    
+    // $('.js-callback-form').on('click', e => {
+    //   $('.overlay').show();
+    //   $('.phone-order-popup').addClass('active');
+    // });
+    // $('.phone-order-popup__close-btn').on('click', e => {
+    //   e.stopPropagation();
+    //   $('.phone-order-popup').removeClass('active');
+    //
+    //   setTimeout(() => $('.overlay').hide(), 700);
+    // });
     // events handler form end
 
     model.wrapper.on('click', '.js-s3d__show-3d', () => {
       this.emit('flatReturnHandler');
       // this.updateFsm('complex', 'search', this.activeFlat)
     });
-
+    
     model.wrapper.on('change', '.js-s3d__radio-type', el => {
       this.emit('changeRadioType', el);
     });
@@ -120,8 +130,8 @@ class FlatView extends EventEmitter {
   }
 
   setNewImage(url) {
-    $('.js-s3d-flat__image')[0].src = url;
-    $('.js-s3d-flat__image')[0].dataset['mfpSrc'] = url;
+    $('.js-s3d-flat__image')[0].src = window.defaultProjectPath + url;
+    $('.js-s3d-flat__image')[0].dataset['mfpSrc'] = window.defaultProjectPath + url;
   }
 
   updateHoverFlats(data) {

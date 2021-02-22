@@ -143,19 +143,18 @@ echo json_encode('<div class="s3d-flat js-s3d-flat">
         </div>
 		<div class="s3d-flat__callback-wrap">
 		    <button type="button" class="s3d-flat__callback s3d-flat__callback1 js-callback-form">
-		        Связаться с менеджером
-                <svg viewBox="0 0 180 6" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 2.33887H177.632V3.33887H0V2.33887Z" />
-                  <path d="M177.632 5.33887V0.338867L180 2.83887L177.632 5.33887Z"/>
-                </svg>
-            </button>
+          Связаться с менеджером
+           <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 400 6" preserveAspectRatio="xMaxYMid slice" xml:space="preserve">
+            <polygon points="400,2.8 397.6,0.3 397.6,2.3 0,2.3 0,3.3 397.6,3.3 397.6,5.3 "/>
+          </svg>
+        </button>
 		    <button type="button" class="s3d-flat__callback s3d-flat__callback2 js-callback-form">
-		        Заявка на бронь
-                <svg viewBox="0 0 180 6" preserveAspectRatio="xMaxYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M0 2.33887H177.632V3.33887H0V2.33887Z" />
-                  <path d="M177.632 5.33887V0.338867L180 2.83887L177.632 5.33887Z"/>
-                </svg>
-             </button>
+          Заявка на бронь
+          <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 400 6" preserveAspectRatio="xMaxYMid slice" xml:space="preserve">
+            <polygon points="400,2.8 397.6,0.3 397.6,2.3 0,2.3 0,3.3 397.6,3.3 397.6,5.3 "/>
+          </svg>
         </button>
         </div>
      </div>')

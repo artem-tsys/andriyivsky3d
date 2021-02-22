@@ -1,7 +1,7 @@
 *{
   box-sizing: border-box;
   &:focus{
-    outline: 1px solid #aaaaaa!important;
+    outline: 1px solid rgba(200, 200, 200, 0.4)!important;
   }
 }
 
@@ -302,13 +302,13 @@
 
 @keyframes s3dAnimateArrowHelper {
   from{
-    transform: translateX(-10%);
-  }
-  50% {
     transform: translateX(0);
   }
+  50% {
+    transform: translateX(-50px);
+  }
   to {
-    transform: translateX(-10%);
+    transform: translateX(0);
   }
 }
 

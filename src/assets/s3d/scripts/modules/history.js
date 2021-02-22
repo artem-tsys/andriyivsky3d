@@ -36,7 +36,6 @@ class History {
   stepBack(data) {
     if (data === null) {
       const config = this.history[0];
-      console.log('config', config)
       this.updateFsm(config, +config.id || undefined);
     } else {
       this.updateFsm(data, _.has(data, 'id') ? data.id : undefined);

@@ -364,7 +364,7 @@
       font-size: 14px;
       color: $color1;
       line-height: 1em;
-      margin: 0 67px auto auto;
+      margin: 0 50px auto auto;
       cursor: pointer;
       transition: color 0.3s ease-in;
       pointer-events: painted;
@@ -420,6 +420,13 @@
       &:hover {
         svg {
           transform: scale(1.2);
+        }
+      }
+
+      &:not(.s3d-show) {
+        color: #E0E0E0;
+        svg {
+          fill: #E0E0E0;
         }
       }
     }

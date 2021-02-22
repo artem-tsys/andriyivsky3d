@@ -19,8 +19,9 @@ class FavouritesModel extends EventEmitter {
     this.animationSpeed = 750;
     this.history = config.history;
     this.preloader = preloader();
+    this.updateFavourites = this.updateFavourites.bind(this);
   }
-
+  
   init() {
     $.ajax(`${defaultModulePath}template/card.php`).then(response => {
       this.templateCard = JSON.parse(response);
@@ -32,7 +33,11 @@ class FavouritesModel extends EventEmitter {
     // sessionStorage.clear()
     this.showSelectFlats();
     this.addPulseCssEffect();
-
+    
+    this.updateFavourites();
+  }
+  
+  updateFavourites() {
     const favourites = this.getFavourites();
     this.emit('updateFavouriteAmount', favourites.length);
     this.emit('updateViewAmount', favourites.length);
@@ -58,6 +63,10 @@ class FavouritesModel extends EventEmitter {
 
   checkedFlat(id, value) {
     const flat = this.getFlat(id);
+    if (flat === undefined) {
+      this.removeElemStorage(id);
+      return false;
+    }
     let check = !flat['favourite'];
     if (value !== 'undefined') { check = value; }
     flat['favourite'] = check;
@@ -155,14 +164,14 @@ class FavouritesModel extends EventEmitter {
   createElemHtml(el) {
     const div = $.parseHTML(this.templateCard)[0];
     div.dataset.id = el.id;
+    div.querySelector('[data-key="id"]').dataset.id = el.id;
     div.querySelector('[data-key="type"]').innerHTML = el.type;
     div.querySelector('[data-key="number"]').innerHTML = el.number;
     div.querySelector('[data-key="floor"]').innerHTML = el.floor;
     div.querySelector('[data-key="rooms"]').innerHTML = el.rooms;
     div.querySelector('[data-key="area"]').innerHTML = el['all_room'];
     div.querySelector('[data-key="src"]').src = el['img_small'];
-    div.querySelector('.js-s3d-add__favourites input').checked = true;
-
+    div.querySelector('[data-key="checked"]').checked = true;
     return div;
   }
 

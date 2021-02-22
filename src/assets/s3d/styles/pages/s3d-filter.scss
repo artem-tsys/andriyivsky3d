@@ -9,6 +9,7 @@
     align-content: flex-start;
     flex-wrap: wrap;
     flex: 0 1 100%;
+    padding: 0 10px;
     background: transparent;
     grid-area: filter;
     overflow-x: hidden;
@@ -73,6 +74,7 @@
       font-weight: 500;
       line-height: 1em;
       font-family: $default-font;
+      padding: 0 10px;
       margin: 0;
     }
 
@@ -85,7 +87,7 @@
       width: 100%;
       flex-shrink: 0;
       background: #ffffff;
-      padding: calc(var(--header-height) + 40px) 50px 45px;
+      padding: calc(var(--header-height) + 40px) 30px 45px;
       transition: height 0.4s ease-out 0.2s;
       z-index: 5;
     }
@@ -503,6 +505,7 @@
       margin: auto 0 0 auto;
       transition: color .4s ease-in-out;
       cursor: pointer;
+      outline: none;
       &-icon {
         display: flex;
         align-items: center;
@@ -518,7 +521,9 @@
           transition: fill .4s ease-in-out;
         }
       }
+      &:focus {
 
+      }
       &:hover {
         color: $bc;
         .s3d-filter__button--reset-icon {
@@ -535,7 +540,7 @@
       width: 100%;
       height: 0;
       flex-shrink: 0;
-      padding: 0 40px;
+      padding: 0 30px;
       background: $color1;
       overflow: hidden;
       box-shadow: 0px -10px 30px rgba(0, 89, 91, 0.25);

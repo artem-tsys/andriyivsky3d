@@ -26,13 +26,14 @@
         }
       }
       &__mini-info {
-        padding: 15px 0;
+        padding: 0 0 12px 0;
       }
       &__title{
         font-size: 30px;
       }
       &__table {
         padding: 0 50px;
+        max-height: calc((var(--vh) * 100) - var(--header-height) - 230px);
       }
       &__left {
         &-buttons {
@@ -44,8 +45,15 @@
         padding: 17px 30px 17px 0;
       }
       &__el {
-        padding: 8px 0;
+        padding: 10px 0;
         font-size: 12px;
+        &__name {
+          padding: 4px 10px 4px 0;
+        }
+
+        &__value {
+          padding: 4px 0;
+        }
       }
       &__callback {
         //max-width: 236px;
@@ -144,8 +152,8 @@
           'info plane plane'
           'info . .';
       &__left {
-        position: fixed;
-        top: 0;
+        //position: fixed;
+        //top: 0;
         //height: 100vh;
         height: calc(var(--vh, 1vh) * 100 - 50px);
         width: 255px;
@@ -160,6 +168,7 @@
       }
       &__title {
         padding: 0 0 0 20px;
+        margin: 15px 0 0 0;
       }
       &__table {
         padding: 55px 20px;
@@ -232,7 +241,9 @@
         height: 40px;
         width: 40px;
         margin: auto 0 0 auto;
-        background: $color2;
+        &.s3d-show {
+          background: $color2;
+        }
         &--text {
           display: none;
         }
@@ -293,6 +304,7 @@
         position: static;
         height: auto;
         padding: 0;
+        width: 90%;
         margin: 0 auto;
         flex-direction: row;
         flex-wrap: wrap;

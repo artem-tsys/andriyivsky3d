@@ -8,14 +8,6 @@
     z-index: 999;
     background: #ffffff;
     border: 1px solid #E6EAEE;
-    //&:hover{
-    //  .s3d-card__top,
-    //  .s3d-card__middle,
-    //  .s3d-card__bottom {
-    //    border-color: $color2;
-    //  }
-      //box-shadow: 0 4px 20px rgba(12, 13, 13, 0.2);
-    //}
     &__top {
       position: relative;
       display: flex;
@@ -25,14 +17,12 @@
       flex: 1 1 auto;
       padding: 25px 35px;
     }
-
     &__middle {
       display: inline-block;
       height: 0;
       width: 100%;
       border-bottom: 1px solid #E6EAEE;
     }
-
     &__bottom {
       width: 100%;
       padding: 25px 25px 25px 40px;
@@ -67,7 +57,7 @@
         left: 50%;
         content: "";
         width: 60%;
-        height: 2px;
+        height: 1px;
         background: $color1;
         transform: translate(-50%,-50%)rotate(45deg);
       }
@@ -77,7 +67,7 @@
         left: 50%;
         content: "";
         width: 60%;
-        height: 2px;
+        height: 1px;
         background: $color1;
         transform: translate(-50%,-50%)rotate(-45deg);
       }
@@ -110,15 +100,13 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 36px;
-      width: 36px;
       display: flex;
       justify-content: center;
       align-items: center;
-
+      padding: 13px 11px;
       background: #E6EAEE;
       font-family: $default-font;
-      font-weight: 500;
+      font-weight: 600;
       font-size: 10px;
       line-height: 1em;
       color: #392425;
@@ -189,19 +177,11 @@
         width: 100%;
         fill: #000000;
         transition: stroke 0.3s ease-in;
-
-        //path {
-        //  transition: transform 0.4s ease-in-out;
-        //  transform: translate(-60%);
-        //}
       }
       &:hover {
         svg {
           animation: s3dAnimateArrowHelper 2.2s ease infinite;
         }
-      //  path {
-      //    transform: translate(0, 0);
-      //  }
       }
     }
     &__add-favourites{
@@ -243,6 +223,12 @@
         //& input:checked + svg{
           //fill: #FFFFFF;
         //}
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      .s3d-card__link svg {
+        animation: s3dAnimateArrowHelper 2.2s ease infinite;
       }
     }
   }

@@ -7,7 +7,7 @@
         </div>
         <div class="s3d-card__close js-s3d-card__close"></div>
         <label data-id="" data-key="id" class="s3d-card__add-favourites js-s3d-add__favourites">
-           <input type="checkbox" data-key="checked">
+           <input type="checkbox" data-key="checked" />
            <svg><use xlink:href="#icon-favourites"></use></svg>
         </label>
         <div class="s3d-card__image"><img src="" data-key="src"></div>
@@ -35,11 +35,11 @@
              </tbody>
           </table>
           <div class="s3d-card__buttons">
-             <button type="button" class="s3d-card__link js-s3d-card__link">Детальніше
-                <svg height="6" viewBox="0 0 493 5" preserveAspectRatio="xMaxYMid slice"  fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect y="2" width="490" height="1" fill="black"/>
-<path d="M490.105 5V0L493 2.5L490.105 5Z" fill="black"/>
-</svg>
+             <button type="button" data-key="id" class="s3d-card__link js-s3d-card__link">Детальніше
+               <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 400 6" preserveAspectRatio="xMaxYMid slice" xml:space="preserve">
+                <polygon points="400,2.8 397.6,0.3 397.6,2.3 0,2.3 0,3.3 397.6,3.3 397.6,5.3 "/>
+              </svg>
              </button>
           </div>
       </div>
