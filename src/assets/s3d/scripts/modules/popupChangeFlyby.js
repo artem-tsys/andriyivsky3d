@@ -19,7 +19,7 @@ class PopupChangeFlyby {
   updateState(config) {
     this.state = config;
   }
-
+  
   updateContent(flat) {
     const wrap = $('.js-s3d-popup-flyby__active');
     const cor = flat.getBoundingClientRect();

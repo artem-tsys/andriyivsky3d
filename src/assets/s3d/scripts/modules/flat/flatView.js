@@ -15,26 +15,15 @@ class FlatView extends EventEmitter {
     });
 
     // events handler form start
-  
-    $('.js-callback-form').on('click', e => {
-     e.preventDefault();
+    model.wrapper.on('click', '.js-callback-form', e => {
+      e.preventDefault();
       $('.js-phone-order-popup').addClass('active');
     });
-    $('.close-btn').on('click', e => {
-     e.preventDefault();
+
+    model.wrapper.on('click', '.close-btn', e => {
+      e.preventDefault();
       $('.js-phone-order-popup').removeClass('active');
     });
-    
-    // $('.js-callback-form').on('click', e => {
-    //   $('.overlay').show();
-    //   $('.phone-order-popup').addClass('active');
-    // });
-    // $('.phone-order-popup__close-btn').on('click', e => {
-    //   e.stopPropagation();
-    //   $('.phone-order-popup').removeClass('active');
-    //
-    //   setTimeout(() => $('.overlay').hide(), 700);
-    // });
     // events handler form end
 
     model.wrapper.on('click', '.js-s3d__show-3d', () => {
@@ -89,9 +78,15 @@ class FlatView extends EventEmitter {
     wrap.find('.js-s3d-flat__image')[0].dataset.mfpSrc = flat.img;
     wrap.find('.js-s3d-flat__table').html(flat['leftBlock']);
     wrap.find('.js-s3d-add__favourites')[0].dataset.id = id;
-    wrap.find('.js-s3d__create-pdf')[0].href = flat.pdf;
     $('polygon.u-svg-plan--active').removeClass('u-svg-plan--active');
     wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active');
+
+    if (flat && flat.pdf) {
+      wrap.find('.js-s3d__create-pdf')[0].style.display = '';
+      wrap.find('.js-s3d__create-pdf')[0].href = flat.pdf;
+    } else {
+      wrap.find('.js-s3d__create-pdf')[0].style.display = 'none';
+    }
   }
 
   changeClassShow(config) {

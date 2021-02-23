@@ -9,6 +9,14 @@
           margin: 0 auto!important;
         }
       }
+        &__show-3d {
+          &:hover{
+            color: $color1;
+            path {
+              transform: translateX(0);
+            }
+          }
+        }
     }
   }
 }

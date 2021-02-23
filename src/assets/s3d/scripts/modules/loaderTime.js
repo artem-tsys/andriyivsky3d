@@ -1,4 +1,4 @@
-function loader(callback, config, nameProject) {
+function loader(callback, config) {
   const arrTimes = [];
   let i = 0; // start
   const timesToTest = 3;

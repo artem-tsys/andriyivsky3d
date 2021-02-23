@@ -116,6 +116,12 @@
       color: $color1;
       cursor: pointer;
     }
+    &-icon {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
     svg{
       height: 13px;
       width: 14px;

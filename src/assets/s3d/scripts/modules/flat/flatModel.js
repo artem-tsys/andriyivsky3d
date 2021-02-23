@@ -139,11 +139,15 @@ class FlatModel extends EventEmitter {
     this.emit('changeClassShow', { element: '.js-s3d-flat .show', flag: false });
     const flat = this.getFlat(this.activeFlat);
     const size = _.size(flat.images);
-    // debugger;
-    const keys = Object.keys(flat.images);
-    if (keys.length === 0) {
+    console.log(size);
+    if (size === 0) {
+      this.emit('updateImg', '/s3d/images/examples/no-image.png');
       return;
     }
+    const keys = Object.keys(flat.images);
+    // if (keys.length === 0) {
+    //   return;
+    // }
 
     this.imagesType = keys[0];
     this.imagesViewType = Object.keys(flat.images[keys[0]])[0];

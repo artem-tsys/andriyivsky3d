@@ -43,7 +43,7 @@ class Plannings {
       }, 600);
     });
 
-    this.flatList = this.getFlat();
+    // this.flatList = this.getFlat();
     this.subject.subscribe(data => {
       updateFlatFavourite(this.wrap, data);
     });
@@ -79,6 +79,7 @@ class Plannings {
   }
 
   createCard(el) {
+    console.log(el['img_small']);
     const checked = el.favourite ? 'checked' : '';
     const div = $.parseHTML(this.templateCard)[0];
     div.dataset.id = el.id;
@@ -88,7 +89,7 @@ class Plannings {
     div.querySelector('[data-key="floor"]').innerHTML = el.floor;
     div.querySelector('[data-key="rooms"]').innerHTML = el.rooms;
     div.querySelector('[data-key="area"]').innerHTML = el['all_room'];
-    div.querySelector('[data-key="src"]').src = el['img_small'];
+    div.querySelector('[data-key="src"]').src = el['img_small'] ? el['img_small'] : window.defaultProjectPath + '/s3d/images/examples/no-image.png';
     div.querySelector('[data-key="checked"]').checked = checked;
 
     return div;

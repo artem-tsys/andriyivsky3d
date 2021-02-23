@@ -67,6 +67,8 @@
 
     &__title {
       display: flex;
+      align-items: center;
+      align-content: center;
       width: 100%;
       color: $color1;
       letter-spacing: -0.05em;

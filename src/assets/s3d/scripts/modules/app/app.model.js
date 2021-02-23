@@ -24,7 +24,7 @@ class AppModel extends EventEmitter {
     super();
     this.config = data;
     this.generalWrapId = data.generalWrapId; // used for create wrapper slider
-    
+
     this.preloader = preloader();
     this.favourites = {};
     this.defaultFlybySettings = {};
@@ -186,6 +186,7 @@ class AppModel extends EventEmitter {
         this.history.replaceUrl(conf);
       }
     }
+    console.log('conf', conf);
     return conf;
   }
 
@@ -295,7 +296,7 @@ class AppModel extends EventEmitter {
           $.ajax(`/wp-content/themes/${nameProject}/assets/s3d/images/svg/flyby/${num}/${side}/${slide}.svg`).then(responsive => {
             // flyby[num][side][slide] =
             const list = [...responsive.querySelectorAll('polygon')]
-            flyby[num][side][slide] = list.map(el => +el.dataset.id)
+            flyby[num][side][slide] = list.map(el => +el.dataset.id);
             // console.log(flyby)
           });
         });
@@ -363,13 +364,14 @@ class AppModel extends EventEmitter {
   }
 
   updateCurrentFilterFlatsId(value) {
+    console.log('value', value);
     this.currentFilterFlatsId$.next(value);
   }
-  
+
   updateFavourites() {
     this.favourites.updateFavourites();
   }
-  
+
   getFavourites() {
     if (_.has(this, 'favourites')) {
       return this.favourites.getFavourites();
@@ -381,7 +383,6 @@ class AppModel extends EventEmitter {
     let config;
     let settings = data;
     let nameMethod;
-
     if (_.has(data, 'method') && data.method === 'search' && id) {
       nameMethod = data.method;
     } else if (_.has(data, 'method') && data.method !== 'search') {
@@ -394,7 +395,20 @@ class AppModel extends EventEmitter {
       config = this.config[settings.type][+settings.flyby][settings.side];
     } else if (data.type === 'flyby' && id) {
       settings = this.checkNextFlyby(data, id);
-      config = this.config[settings.type || this.defaultFlybySettings.type][+settings.flyby || this.defaultFlybySettings.flyby][settings.side || this.defaultFlybySettings.side];
+      const type = _.has(settings, 'type') ? settings.type : this.defaultFlybySettings.type;
+      const flyby = _.has(settings, 'flyby') ? +settings.flyby : this.defaultFlybySettings.flyby;
+      const side = _.has(settings, 'side') ? +settings.side : this.defaultFlybySettings.side;
+
+      if (settings === null) {
+        settings = {
+          type,
+          flyby,
+          side,
+        };
+      }
+
+      config = this.config[type][flyby][side];
+      // config = this.config[settings.type || this.defaultFlybySettings.type][+settings.flyby || this.defaultFlybySettings.flyby][settings.side || this.defaultFlybySettings.side];
     } else if (data.type === 'flyby') {
       config = this.config[data.type || this.defaultFlybySettings.type][+data.flyby || this.defaultFlybySettings.flyby][data.side || this.defaultFlybySettings.side];
       if (_.isUndefined(config)) {

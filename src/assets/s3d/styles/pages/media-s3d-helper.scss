@@ -1,12 +1,20 @@
 @media screen and (max-width: 1440px) {
   .s3d__helper {
+    &__arrow {
+      height: 50px;
+      width: 50px;
+    }
     &[data-step='0'] {
       top: calc(var(--header-height) + 20px + 20px);
-      left: 305px;
+      left: 300px;
     }
     &[data-step='1'] {
-      left: 222px;
+      left: 210px;
     }
+    &[data-step='2'] {
+      left: calc(100% - 100px);
+    }
+
   }
 }
 @media screen and (max-width: 992px) {
@@ -41,17 +49,21 @@
       top: 20px;
       right: 10px;
     }
+    &__arrow {
+      height: 40px;
+      width: 40px;
+    }
 
     &[data-step='0'] {
-      top: var(--header-height);
-      left: 95px;
+      top: calc(var(--header-height) + 15px);
+      left: 105px;
       .s3d__helper__arrow {
-        transform: translate(-100%, 50%);
+        transform: translate(-100%, 0);
       }
     }
     &[data-step='2'] {
       top: 50%;
-      left: calc(100% - 90px);
+      left: calc(100% - 80px);
       .s3d__helper__arrow {
         transform: translate(100%, -50%);
       }

@@ -119,7 +119,7 @@
       height: 6px;
       width: calc(100% + 50px);
       overflow: hidden;
-      margin: 0;
+      margin: 3px 0 0 0;
       svg {
         height: 4px;
         width: 100%;
@@ -133,8 +133,8 @@
   }
   &__arrow{
     position: absolute;
-    height: 34px;
-    width: 34px;
+    height: 60px;
+    width: 60px;
     display: flex;
     align-items: center;
     align-content: center;
@@ -235,27 +235,27 @@
     .s3d__helper__arrow {
       left: 0;
       top: 0;
-      transform: translate(calc(-100% - 10px), 12px);
+      transform: translate(-100%, 0);
     }
   }
   &[data-step='1'] {
     top: calc(100% - 50px);
-    left: 245px;
+    left: 250px;
     transform: translate(0, -100%);
     .s3d__helper__arrow {
       left: 0;
       bottom: 0;
-      transform: translate(calc(-100% - 10px), 0);
+      transform: translate(-100%, 0);
     }
   }
   &[data-step='2'] {
     top: 50%;
-    left: calc(100% - 114px);
+    left: calc(100% - 130px);
     transform: translate(-100%, -50%);
     .s3d__helper__arrow {
       right: 0;
       top: 50%;
-      transform: translate(calc(100% + 10px), -50%)rotate(180deg);
+      transform: translate(100%, -50%)rotate(180deg);
     }
   }
 }
