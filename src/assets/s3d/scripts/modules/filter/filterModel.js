@@ -112,6 +112,7 @@ class FilterModel extends EventEmitter {
       const { min, max } = config;
       const $min = $(`.js-s3d-filter__${config.type}__min--input`);
       const $max = $(`.js-s3d-filter__${config.type}__max--input`);
+
       $(`.js-s3d-filter__${config.type}--input`).ionRangeSlider({
         type: 'double',
         grid: false,
@@ -283,7 +284,6 @@ class FilterModel extends EventEmitter {
       amountFlat += 1;
       return true;
     });
-    console.log(select);
     this.emit('setAmountSelectFlat', select.length);
     this.updateCurrentFilterFlatsId(select);
     return select;

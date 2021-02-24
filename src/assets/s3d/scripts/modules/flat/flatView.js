@@ -30,7 +30,7 @@ class FlatView extends EventEmitter {
       this.emit('flatReturnHandler');
       // this.updateFsm('complex', 'search', this.activeFlat)
     });
-    
+
     model.wrapper.on('change', '.js-s3d__radio-type', el => {
       this.emit('changeRadioType', el);
     });
@@ -125,8 +125,8 @@ class FlatView extends EventEmitter {
   }
 
   setNewImage(url) {
-    $('.js-s3d-flat__image')[0].src = window.defaultProjectPath + url;
-    $('.js-s3d-flat__image')[0].dataset['mfpSrc'] = window.defaultProjectPath + url;
+    $('.js-s3d-flat__image')[0].src = defaultProjectPath + url;
+    $('.js-s3d-flat__image')[0].dataset['mfpSrc'] = defaultProjectPath + url;
   }
 
   updateHoverFlats(data) {

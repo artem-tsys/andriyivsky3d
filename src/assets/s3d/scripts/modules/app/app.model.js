@@ -144,7 +144,6 @@ class AppModel extends EventEmitter {
     }
 
     if (!_.has(obj, 's3d_type') || !hasCorrectPage) {
-    // if (!_.has(obj, 's3d_type') || !hasCorrectPage || obj['s3d_type'] === 'favourites') {
       conf['type'] = 'flyby';
       conf['flyby'] = '1';
       conf['side'] = 'outside';
@@ -186,7 +185,6 @@ class AppModel extends EventEmitter {
         this.history.replaceUrl(conf);
       }
     }
-    console.log('conf', conf);
     return conf;
   }
 
@@ -364,7 +362,6 @@ class AppModel extends EventEmitter {
   }
 
   updateCurrentFilterFlatsId(value) {
-    console.log('value', value);
     this.currentFilterFlatsId$.next(value);
   }
 
@@ -383,6 +380,7 @@ class AppModel extends EventEmitter {
     let config;
     let settings = data;
     let nameMethod;
+
     if (_.has(data, 'method') && data.method === 'search' && id) {
       nameMethod = data.method;
     } else if (_.has(data, 'method') && data.method !== 'search') {

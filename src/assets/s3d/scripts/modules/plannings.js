@@ -43,7 +43,6 @@ class Plannings {
       }, 600);
     });
 
-    // this.flatList = this.getFlat();
     this.subject.subscribe(data => {
       updateFlatFavourite(this.wrap, data);
     });
@@ -79,7 +78,6 @@ class Plannings {
   }
 
   createCard(el) {
-    console.log(el['img_small']);
     const checked = el.favourite ? 'checked' : '';
     const div = $.parseHTML(this.templateCard)[0];
     div.dataset.id = el.id;

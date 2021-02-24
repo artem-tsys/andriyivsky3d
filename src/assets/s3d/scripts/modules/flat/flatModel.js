@@ -27,8 +27,6 @@ class FlatModel extends EventEmitter {
 
     this.imagesType = '';
     this.imagesViewType = '';
-    
-    console.log(config);
   }
 
   init(config) {
@@ -37,7 +35,7 @@ class FlatModel extends EventEmitter {
     this.activeFlat = +config.flatId;
     // this.getPlane(config);
   }
-  
+
   createWrap() {
     // все 3 обертки нужны, без них на мобилке пропадает прокрутка и всё ломается
     const wrap1 = createMarkup('div', { class: `s3d__wrap js-s3d__wrapper__${this.type} s3d__wrapper__${this.type}` });// const wrap2 = createMarkup(conf.typeCreateBlock, { id: `js-s3d__${conf.id}` })
@@ -139,15 +137,11 @@ class FlatModel extends EventEmitter {
     this.emit('changeClassShow', { element: '.js-s3d-flat .show', flag: false });
     const flat = this.getFlat(this.activeFlat);
     const size = _.size(flat.images);
-    console.log(size);
     if (size === 0) {
       this.emit('updateImg', '/s3d/images/examples/no-image.png');
       return;
     }
     const keys = Object.keys(flat.images);
-    // if (keys.length === 0) {
-    //   return;
-    // }
 
     this.imagesType = keys[0];
     this.imagesViewType = Object.keys(flat.images[keys[0]])[0];

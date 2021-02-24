@@ -347,6 +347,18 @@ body, html {
   }
 }
 
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .wrapper__first-info {
   z-index: 205;
   position: fixed;

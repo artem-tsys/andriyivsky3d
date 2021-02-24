@@ -273,8 +273,6 @@ function fsm() {
     },
     dispatch(state, actionName, self, payload) {
       let change = false;
-      console.log(state, this.state, this.settings);
-      
       if (state.type !== this.state || +state.flyby !== this.settings.flyby || state.side !== this.settings.side) {
         this.changeState(state);
         if (state.type === 'flyby') {

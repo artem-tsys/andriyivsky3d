@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { gsap, Power4, TimelineMax } from 'gsap';
+import { gsap, Power1, TimelineMax } from 'gsap';
 import EventEmitter from '../eventEmitter/EventEmitter';
 
 import {
@@ -16,12 +16,13 @@ class FavouritesModel extends EventEmitter {
     this.updateFsm = config.updateFsm;
     this.fsm = config.fsm;
     this.activeFlat = config.activeFlat;
-    this.animationSpeed = 750;
+    this.animationSpeed = 800;
+    // this.animationSpeed = 750;
     this.history = config.history;
     this.preloader = preloader();
     this.updateFavourites = this.updateFavourites.bind(this);
   }
-  
+
   init() {
     $.ajax(`${defaultModulePath}template/card.php`).then(response => {
       this.templateCard = JSON.parse(response);
@@ -33,10 +34,10 @@ class FavouritesModel extends EventEmitter {
     // sessionStorage.clear()
     this.showSelectFlats();
     this.addPulseCssEffect();
-    
+
     this.updateFavourites();
   }
-  
+
   updateFavourites() {
     const favourites = this.getFavourites();
     this.emit('updateFavouriteAmount', favourites.length);
@@ -240,6 +241,10 @@ class FavouritesModel extends EventEmitter {
     };
   }
 
+  getSpeedAnimateHeart(offsetObj) {
+    return Math.abs(offsetObj.x) + Math.abs(offsetObj.y);
+  }
+
   animateFavouriteElement(destination, element, distance, reverse) {
     if (gsap === undefined) return;
     const curElem = element;
@@ -251,14 +256,20 @@ class FavouritesModel extends EventEmitter {
     curElem.style.cssText += `
 			fill: #405174;
 			position:relative;
-			z-index:2000;
+			z-index:20000;
 			stroke:none;
 			position:fixed;
 			left:${animatingElParams.left}px;
-			top:${animatingElParams.top}px;`;
-    const speed = this.animationSpeed / 1000;
+			top:${animatingElParams.top}px;
+			animation: pulse forwards 0.6s linear;
+			`;
+
+    const speed = this.animationSpeed / 1000 * (this.getSpeedAnimateHeart(distance) / 1000);
+    console.log('this.animationSpeed / 1000', this.animationSpeed / 1000);
+    console.log('speed', speed)
+    // const speed = this.animationSpeed / 1000;
     const tl = new TimelineMax({
-      delay: 0,
+      delay: 0.4,
       repeat: 0,
       paused: true,
       onComplete: () => {
@@ -267,12 +278,14 @@ class FavouritesModel extends EventEmitter {
       },
     });
     if (reverse === true) {
-      tl.from(curElem, { y: distance.y, duration: speed, ease: Power4.easeIn });
-      tl.from(curElem, { x: distance.x, duration: speed / 2.5, ease: Power4.easeIn }, `-=${speed / 2.5}`);
+      tl.from(curElem, { y: distance.y, duration: speed, ease: Power1.easeIn });
+      tl.from(curElem, { x: distance.x, duration: speed, ease: Power1.easeIn }, `-=${speed}`);
+      // tl.from(curElem, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`);
     } else {
       tl.set(curElem, { classList: `+=${this.animationPulseClass}` });
-      tl.to(curElem, { y: distance.y, duration: speed, ease: Power4.easeIn });
-      tl.to(curElem, { x: distance.x, duration: speed / 2.5, ease: Power4.easeIn }, `-=${speed / 2.5}`);
+      tl.to(curElem, { y: distance.y, duration: speed, ease: Power1.easeIn });
+      tl.to(curElem, { x: distance.x, duration: speed, ease: Power1.easeIn }, `-=${speed}`);
+      // tl.to(curElem, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`);
     }
     tl.set(curElem, { x: 0, y: 0 });
     tl.set(curElem, { clearProps: 'all' });

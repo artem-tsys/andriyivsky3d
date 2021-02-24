@@ -29,7 +29,7 @@ class SliderModel extends EventEmitter {
     this.compass = config.compass;
     this.currentCompassDeg = 0;
     this.startDegCompass = config.startDegCompass;
-    
+
     this.updateFsm = config.updateFsm;
     this.wrapper = config.wrapper;
     this.wrapperEvent = '.js-s3d__svgWrap';
@@ -257,7 +257,6 @@ class SliderModel extends EventEmitter {
     };
 
     img.onerror = function (e) {
-      console.error(e)
       if (type === 'error') {
         self.sendResponsiveError(this, self);
       } else {

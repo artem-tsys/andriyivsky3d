@@ -34,9 +34,7 @@ class Svg {
           $(svgWrap).append(svg.documentElement);
           this.showAvailableFlat();
           resolve();
-        }).fail(error => {
-          console.error(error);
-        });
+        }).fail(error => console.error(error));
     }));
 
     Promise.all(promiseList).then(result => {
