@@ -354,7 +354,7 @@
 
     &__hide {
       position: absolute;
-      bottom: 0;
+      bottom: 1px;
       left: 50%;
       display: none;
       transform: translate(-50%, 100%);
@@ -474,7 +474,7 @@
       font-size: 12px;
       font-weight: 600;
       line-height: 12px;
-      text-transform: uppercase;
+      text-transform: capitalize;
       transition: all .4s ease-in-out;
       &-icon {
         display: none;

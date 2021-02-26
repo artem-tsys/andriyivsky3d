@@ -110,7 +110,6 @@
       font-size: 14px;
       font-weight: 500;
       line-height: 1.3em;
-      text-transform: capitalize;
       transition: all .4s linear;
       text-align: left;
       cursor: pointer;
@@ -124,12 +123,6 @@
         font-weight: 600;
         background: $color2;
         z-index: 5;
-      }
-
-      &:hover:not( .active ):not( [ disabled ] ) {
-        background: #FFFFFF;
-        color: $color1;
-        width: 100%;
       }
 
       &:disabled {
@@ -231,17 +224,6 @@
           margin: 0 10px;
           transition: background-color 0.3s ease-in;
         }
-        &:hover {
-          .s3d-ctr__open-helper--line {
-            background: $color2;
-          }
-          .s3d-ctr__open-helper--text{
-            color: $color2;
-          }
-          .s3d-ctr__open-helper--icon{
-            fill: $color2;
-          }
-        }
       }
 
       &-infra {
@@ -290,9 +272,6 @@
           transition: color 0.3s ease-in;
           pointer-events: painted;
         }
-        &:hover .s3d-ctr__open-infra--text {
-          color: $color2;
-        }
       }
     }
 
@@ -304,6 +283,12 @@
     }
 
     &__toHome {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      height: 30px;
+      width: 30px;
       cursor: pointer;
       pointer-events: painted;
       z-index: 5;
@@ -312,11 +297,6 @@
         height: 14px;
         fill: $color1;
         transition: fill 0.4s ease-in-out;
-      }
-      &:hover {
-        svg {
-          fill: $color2;
-        }
       }
     }
 
@@ -342,15 +322,6 @@
       path {
         transform: translateX(30%);
         transition: transform 0.4s ease-in-out;
-      }
-      &:hover{
-        //color: $color2;
-        //svg {
-          //stroke: $color2;
-        //}
-        path {
-          transform: translateX(0);
-        }
       }
     }
 
@@ -416,11 +387,6 @@
         width: 18px;
         fill: $color1;
         transition: transform 0.4s ease-in-out;
-      }
-      &:hover {
-        svg {
-          transform: scale(1.2);
-        }
       }
 
       &:not(.s3d-show) {

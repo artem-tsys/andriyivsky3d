@@ -59,7 +59,7 @@
       height: 100%;
       width: 100%;
       padding: calc(var(--header-height) + 26px) 0 40px 0;
-      background: url("/wp-content/themes/" + $projectName + "/assets/s3d/images/flat-bg.jpg") center /cover;
+      background: url("/wp-content/themes/" + $projectName + "/assets/s3d/images/flat-bg.jpg") no-repeat center /cover;
       &-buttons {
         display: flex;
         flex-direction: column;
@@ -323,7 +323,7 @@
         width: 16px;
         fill: transparent;
         stroke: $color1;
-        stroke-width: 2px;
+        stroke-width: 1px;
         pointer-events: none;
         transition: stroke .3s ease-out, fill .3s ease-out;
       }

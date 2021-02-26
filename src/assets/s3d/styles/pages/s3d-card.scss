@@ -71,9 +71,6 @@
         background: $color1;
         transform: translate(-50%,-50%)rotate(-45deg);
       }
-      &:hover{
-        transform: rotate(90deg);
-      }
     }
     &__image {
       position: relative;
@@ -178,11 +175,6 @@
         fill: #000000;
         transition: stroke 0.3s ease-in;
       }
-      &:hover {
-        svg {
-          animation: s3dAnimateArrowHelper 2.2s ease infinite;
-        }
-      }
     }
     &__add-favourites{
       position: absolute;
@@ -214,21 +206,6 @@
         stroke-width: 1px;
         pointer-events: none;
         transition: stroke .3s ease-out, fill .3s ease-out;
-      }
-      &:hover{
-        box-shadow: 0 4px 15px rgba(122, 65, 56, 0.3);
-        svg{
-          fill: $color1;
-        }
-        //& input:checked + svg{
-          //fill: #FFFFFF;
-        //}
-      }
-    }
-    &:hover {
-      cursor: pointer;
-      .s3d-card__link svg {
-        animation: s3dAnimateArrowHelper 2.2s ease infinite;
       }
     }
   }

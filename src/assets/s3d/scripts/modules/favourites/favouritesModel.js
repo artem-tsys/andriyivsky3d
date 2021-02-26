@@ -184,9 +184,11 @@ class FavouritesModel extends EventEmitter {
 			.${this.animationPulseClass} {
 				border-radius: 50%;
 				cursor: pointer;
-				box-shadow: 0 0 0 rgba(255,255,255, 0.75);
-				animation: pulse 0.5s 1 ease-out;
-			}.${this.animationPulseClass}:hover {	animation: none;}@-webkit-keyframes ${this.animationPulseClass} {	0% {-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}@keyframes pulse {	0% {	  -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	  box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);		box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);		box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}
+				fill: #405174;
+				box-shadow: 0 0 0 rgba(64,81,116, 0.75);
+				animation: pulse 0.4s 1 alternate;
+			}.${this.animationPulseClass}:hover {	animation: none;}
+			/*@-webkit-keyframes ${this.animationPulseClass} {	0% {-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}@keyframes pulse {	0% {	  -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	  box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);		box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);		box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}*/
 		</style>
 		`);
   }
@@ -261,15 +263,13 @@ class FavouritesModel extends EventEmitter {
 			position:fixed;
 			left:${animatingElParams.left}px;
 			top:${animatingElParams.top}px;
-			animation: pulse forwards 0.6s linear;
+			transform-origin: center;
 			`;
 
-    const speed = this.animationSpeed / 1000 * (this.getSpeedAnimateHeart(distance) / 1000);
-    console.log('this.animationSpeed / 1000', this.animationSpeed / 1000);
-    console.log('speed', speed)
+    const speed = this.animationSpeed / 1000 * (this.getSpeedAnimateHeart(distance) / 850);
     // const speed = this.animationSpeed / 1000;
     const tl = new TimelineMax({
-      delay: 0.4,
+      delay: 0.15,
       repeat: 0,
       paused: true,
       onComplete: () => {
@@ -278,13 +278,13 @@ class FavouritesModel extends EventEmitter {
       },
     });
     if (reverse === true) {
-      tl.from(curElem, { y: distance.y, duration: speed, ease: Power1.easeIn });
-      tl.from(curElem, { x: distance.x, duration: speed, ease: Power1.easeIn }, `-=${speed}`);
+      tl.from(curElem, { y: distance.y, duration: speed, ease: Power1.easeInOut });
+      tl.from(curElem, { x: distance.x, duration: speed, ease: Power1.easeInOut }, `-=${speed}`);
       // tl.from(curElem, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`);
     } else {
       tl.set(curElem, { classList: `+=${this.animationPulseClass}` });
-      tl.to(curElem, { y: distance.y, duration: speed, ease: Power1.easeIn });
-      tl.to(curElem, { x: distance.x, duration: speed, ease: Power1.easeIn }, `-=${speed}`);
+      tl.to(curElem, { y: distance.y, duration: speed, ease: Power1.easeInOut });
+      tl.to(curElem, { x: distance.x, duration: speed, ease: Power1.easeInOut }, `-=${speed}`);
       // tl.to(curElem, { x: distance.x, duration: speed / 2.5, ease: Power1.easeIn }, `-=${speed / 2.5}`);
     }
     tl.set(curElem, { x: 0, y: 0 });

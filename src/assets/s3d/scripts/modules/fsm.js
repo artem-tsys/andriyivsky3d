@@ -159,6 +159,7 @@ function fsmConfig() {
 
 function fsm() {
   return {
+    firstLoad: true,
     state: '',
     settings: {},
     transitions: {
@@ -261,6 +262,12 @@ function fsm() {
       },
       favourites: {
         general() {
+          if (this.fsm.firstLoad) {
+            this.fsm.firstLoad = false;
+          } else {
+            this.emit('animateChangeBlock');
+          }
+
           this.preloader.hide();
           this.favourites.updateFavouritesBlock();
           this.changeViewBlock(this.fsm.state);

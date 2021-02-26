@@ -15,10 +15,11 @@
                 </div>
             </div>
             <div class="s3d__helper__arrow">
-                <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 17V3L8 10L1 17Z" />
-                    <path d="M14 17V3L21 10L14 17Z" />
-                </svg>
+            <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 15V2L8 8.5L1 15Z" stroke="#405174"/>
+              <path d="M13 15V2L20 8.5L13 15Z" stroke="#405174"/>
+            </svg>
+                
             </div>
         </div>
     </div>')

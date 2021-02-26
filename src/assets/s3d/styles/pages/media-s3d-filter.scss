@@ -49,8 +49,7 @@
   .s3d {
     &-filter {
       flex: 1 1 100%;
-      //width: auto;
-      padding: 0;
+      padding: 0 10px;
       &-wrap {
         .s3d__favourites {
           margin: 0 0 0 40px;
@@ -67,6 +66,7 @@
         }
         &--apply {
           display: flex;
+          width: 80px;
           margin: auto 0 0 5px;
         }
       }
@@ -113,6 +113,7 @@
         &[data-type="plannings"] {
           width: 100%;
           height: auto;
+          box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6);
           .s3d-filter {
             width: 100%;
             &__table {
@@ -126,7 +127,7 @@
                 }
               }
               &--apply {
-                height: 40px;
+                height: 30px;
                 width: 150px;
               }
             }
@@ -143,6 +144,9 @@
               }
             }
             &__amount-flat {
+              display: none;
+            }
+            &__hide {
               display: none;
             }
           }

@@ -188,6 +188,21 @@ class FlatModel extends EventEmitter {
       this.emit('updateDataFlats', this.getFlat(this.activeFlat));
     }
   }
+
+  getPdfLink(id) {
+    $.ajax('/wp-admin/admin-ajax.php', {
+      method: 'POST',
+      data: {
+        action: 'createPdf',
+        id,
+      },
+    })
+      .then(resp => JSON.parse(resp))
+      .then(url => {
+        document.body.insertAdjacentHTML('beforebegin', `<a class="initClickPdf" target="_blank" href="${url}"></a>`);
+        document.querySelector('.initClickPdf').click();
+      });
+  }
 }
 
 export default FlatModel;

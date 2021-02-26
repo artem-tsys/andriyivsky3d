@@ -2,8 +2,8 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  padding: 30px 20px 25px 20px;
-  width: 235px;
+  padding: 40px;
+  width: 281px;
   top: 0;
   left: 0;
   background: #ffffff;
@@ -43,8 +43,8 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 25px;
-    height: 25px;
+    width: 33px;
+    height: 33px;
     z-index: 2;
     transform: translate(0, 0);
     transform-origin: center;
@@ -58,7 +58,7 @@
       transform-origin: center;
       top: 50%;
       left: 50%;
-      width: 80%;
+      width: 18px;
       height: 1px;
       background: $color1;
     }
@@ -91,9 +91,9 @@
     font-family: $default-font;
     font-weight: 500;
     font-size: 13px;
-    line-height: 1.8em;
+    line-height: 20px;
     color: $color1;
-    margin: 10px 0 0;
+    margin: 20px 0 0;
   }
   &__link {
     position: relative;
@@ -102,33 +102,37 @@
     align-items: flex-start;
     align-content: flex-start;
     font-family: $default-font;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
-    line-height: 1.2em;
+    line-height: 1.3em;
     letter-spacing: -0.05em;
     color: $bc;
-    width: 50%;
+    width: 89px;
     margin: 20px auto 0 0;
-    padding: 0 50px 0 0;
+    padding: 0;
     text-transform: capitalize;
     pointer-events: painted;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
     &-arrow {
       display: flex;
-      height: 6px;
-      width: calc(100% + 50px);
+      height: 4px;
+      width: 100%;
       overflow: hidden;
       margin: 3px 0 0 0;
       svg {
         height: 4px;
         width: 100%;
         fill: $bc;
+        transition: color 0.3s ease-in-out;
         animation: s3dAnimateArrowHelper 2.2s ease infinite;
       }
     }
     &:hover {
       color: $color1;
+      svg {
+        fill: $color1;
+      }
     }
   }
   &__arrow{

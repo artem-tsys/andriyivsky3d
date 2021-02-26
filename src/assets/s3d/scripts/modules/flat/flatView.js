@@ -31,6 +31,11 @@ class FlatView extends EventEmitter {
       // this.updateFsm('complex', 'search', this.activeFlat)
     });
 
+    model.wrapper.on('click', '.js-s3d__create-pdf', event => {
+      event.preventDefault();
+      this.emit('clickPdfHandler', event);
+    });
+
     model.wrapper.on('change', '.js-s3d__radio-type', el => {
       this.emit('changeRadioType', el);
     });
