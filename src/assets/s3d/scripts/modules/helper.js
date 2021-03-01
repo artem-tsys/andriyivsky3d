@@ -57,20 +57,34 @@ class Helper {
   update(conf) {
     const result = [];
     const wrap = $('.js-s3d__helper__active');
-    wrap.html('');
-    if (_.isString(conf.elem)) {
-      result.push(this.updateActiveElement($(conf.elem)[0]));
-      result.push(this.createActiveElementBlock($(conf.elem)[0]));
-    } else {
-      conf.elem.forEach(name => {
-        result.push(this.updateActiveElement($(name)[0]));
-        result.push(this.createActiveElementBlock($(name)[0]));
-      });
-    }
+    const helper = $('.js-s3d__helper')[0];
+    
+    const promise = new Promise(callback => {
+      wrap[0].style.opacity = 0;
+      helper.style.opacity = 0;
+      setTimeout(() => {
+        callback();
+      }, 250);
+    });
+    promise.then(() => {
+      wrap.html('');
+      if (_.isString(conf.elem)) {
+        result.push(this.updateActiveElement($(conf.elem)[0]));
+        result.push(this.createActiveElementBlock($(conf.elem)[0]));
+      } else {
+        conf.elem.forEach(name => {
+          result.push(this.updateActiveElement($(name)[0]));
+          result.push(this.createActiveElementBlock($(name)[0]));
+        });
+      }
 
-    this.updateContent(conf);
-    $('.js-s3d__helper')[0].dataset.step = this.currentWindow;
-    wrap.append(...result);
+      this.updateContent(conf);
+      $('.js-s3d__helper')[0].dataset.step = this.currentWindow;
+      wrap.append(...result);
+    }).then(() => {
+      helper.style.opacity = 1;
+      wrap[0].style.opacity = 1;
+    });
   }
 
   showHelper() {

@@ -7,7 +7,8 @@
   top: 0;
   left: 0;
   background: #ffffff;
-  transition: transform 0.4s ease-in, top 0.4s ease-in, left 0.4s ease-in, bottom 0.4s ease-in, right 0.4s ease-in;
+  transition: opacity 0.2s ease-in;
+  //transition: transform 0.4s ease-in, top 0.4s ease-in, left 0.4s ease-in, bottom 0.4s ease-in, right 0.4s ease-in;
   z-index: 5;
   &__wrap {
     position: fixed;
@@ -221,6 +222,7 @@
     height: 100%;
     width: 100%;
     z-index: 0;
+    transition: opacity 0.2s ease-in;
     pointer-events: none!important;
     * {
       visibility: visible;

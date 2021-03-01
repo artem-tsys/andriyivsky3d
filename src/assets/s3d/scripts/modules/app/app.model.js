@@ -240,11 +240,11 @@ class AppModel extends EventEmitter {
     // filter only flats  id = 1
     const currentFilterFlatsId = data.reduce((previous, current) => {
       // if (current['type_object'] === '1') {
-        const flat = current;
-        flat.id = +flat.id;
-        flat['favourite'] = false;
-        this.flatList[+flat.id] = flat;
-        previous.push(+flat.id);
+      const flat = current;
+      flat.id = +flat.id;
+      flat['favourite'] = false;
+      this.flatList[+flat.id] = flat;
+      previous.push(+flat.id);
       // }
       return previous;
     }, []);

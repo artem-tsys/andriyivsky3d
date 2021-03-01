@@ -1,11 +1,8 @@
-import BehaviorSubject from 'rxjs';
 import $ from 'jquery';
-import Input from './modules/input';
+import _ from 'lodash';
 import loader from './modules/loaderTime';
 import { isBrowser, isDevice } from './modules/checkDevice';
-import {
-  addBlur, unActive, preloader, updateFlatFavourite, compass, debounce,
-} from './modules/general/General';
+import { preloader } from './modules/general/General';
 import CreateMarkup from './modules/markup';
 import AppController from './modules/app/app.controller';
 import AppModel from './modules/app/app.model';
@@ -35,9 +32,12 @@ async function init() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
     if (!value.fastSpeed) {
       // else speed slowly update link with light image
-      for (const pr in config) {
-        if (config[pr].imageUrl || window.status !== 'local') {
-          config[pr].imageUrl += 'mobile/';
+      for (const flyby in config.flyby) {
+        for (const side in config.flyby[flyby]) {
+          const currentSide = config.flyby[flyby][side];
+          if (_.has(currentSide, 'imageUrl') && window.status !== 'local') {
+            // currentSide.imageUrl += 'mobile/';
+          }
         }
       }
     }

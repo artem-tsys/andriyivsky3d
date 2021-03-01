@@ -17,6 +17,7 @@
         ],
         "activeSlide": 31,
         "rotateSpeed": 20,
+        "mouseSpeed": 0.5,
         "startDegCompass": 28
       }
     }
@@ -34,4 +35,3 @@
     "generalWrapId": ".js-s3d__slideModule"
   }
 }
-
