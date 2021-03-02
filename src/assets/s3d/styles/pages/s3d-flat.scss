@@ -105,14 +105,23 @@
       justify-content: space-between;
       padding: 0 0 25px 0;
       flex: 0 1 auto;
+      overflow: visible;
     }
-    &__table {
+    &__card {
       display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       width: 100%;
       max-height: calc((var(--vh) * 100) - var(--header-height) - 300px);
       overflow-y: auto;
-      flex-direction: column;
       padding: 0 50px 25px 50px;
+    }
+    &__table {
+      display: flex;
+      align-content: flex-start;
+      align-items: flex-start;
+      flex: 1 1 100%;
+      height: 100%;
     }
     &__list {
       max-height: 100%;
@@ -586,7 +595,8 @@
     align-items: center;
     flex: 0 1 auto;
     padding: 0;
-    grid-area: mini;
+    height: 100%;
+    //grid-area: mini;
 
     &__title{
       font-family: $default-font;

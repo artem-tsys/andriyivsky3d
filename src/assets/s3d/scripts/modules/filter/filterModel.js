@@ -9,7 +9,7 @@ import {
 class FilterModel extends EventEmitter {
   constructor(config) {
     super();
-    this.filterName = { range: ['area', 'floor'], checkbox: ['rooms'] };
+    this.filterName = { range: ['area', 'floor'], checkbox: ['types'] };
     this.filter = {};
     this.nameFilterFlat = {
       area: 'all_room',
@@ -17,6 +17,7 @@ class FilterModel extends EventEmitter {
       // house: 'build_name',
       floor: 'floor',
       rooms: 'rooms',
+      types: 'type_object',
       // price: 'price',
       // priceM2: 'price_m2',
     };
@@ -267,6 +268,11 @@ class FilterModel extends EventEmitter {
           }
         }
       }
+      
+      // if (flat[nameFilterFlat.types] !== undefined
+      //   && flat[nameFilterFlat.types]) {
+      // }
+      
       if (flat[nameFilterFlat.house] !== undefined
         && !flat[nameFilterFlat.house]
       ) {

@@ -1,7 +1,7 @@
 <?php
 echo json_encode('<div class="s3d-flat js-s3d-flat">
         <div class="s3d-flat__left">
-          <div class="s3d-flat__table js-s3d-flat__table">
+          <div class="s3d-flat__card js-s3d-flat__table">
             <div class="s3d-flat__mini-info">
               <div class="s3d-mini-info">
                 <div class="s3d-mini-info__title">номер:</div>
@@ -18,6 +18,7 @@ echo json_encode('<div class="s3d-flat js-s3d-flat">
                 <div class="s3d-mini-info__amount">1</div>
               </div>
             </div>
+              <div class="s3d-flat__table">
                 <table>
                   <tbody>
                     <tr class="s3d-flat__el">
@@ -38,6 +39,7 @@ echo json_encode('<div class="s3d-flat js-s3d-flat">
                     </tr>
                   </tbody>
                 </table>
+              </div>  
             </div>
             <div class="s3d-flat__left-buttons">
                 <a href="#" class="s3d-flat__pdf js-s3d__create-pdf">

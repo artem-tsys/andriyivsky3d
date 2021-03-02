@@ -29,7 +29,7 @@ class FlatController {
     view.on('updateHoverDataFlat', event => {
       this._model.updateMiniInfo(event);
     });
-    
+
     view.on('clickPdfHandler', event => {
       this._model.getPdfLink(event.currentTarget.dataset.id);
     });

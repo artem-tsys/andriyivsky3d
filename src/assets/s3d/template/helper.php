@@ -18,8 +18,7 @@
             <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 15V2L8 8.5L1 15Z" stroke="#405174"/>
               <path d="M13 15V2L20 8.5L13 15Z" stroke="#405174"/>
-            </svg>
-                
+            </svg>  
             </div>
         </div>
     </div>')

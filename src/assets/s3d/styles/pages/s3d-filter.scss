@@ -135,6 +135,48 @@
         justify-content: flex-end;
       }
     }
+    &__types {
+      margin-top: 35px;
+      input {
+        display: none;
+
+        &:checked+ label {
+          background: $color1;
+          color: $color2;
+        }
+
+        &:disabled+ label {
+          color: #d3d7df;
+          cursor: no-drop;
+        }
+      }
+
+      &--label {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        //width: 30px;
+        height: 30px;
+        padding: 10px 15px;
+        align-items: center;
+        cursor: pointer;
+        background: #F2F2F2;
+        transition: background-color .3s ease-in, color .3s ease-in;
+
+        font-family: $default-font;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 1em;
+        color: $color1;
+        &:hover {
+          background: $color2;
+          //color: #ffffff;
+        }
+      }
+      .s3d-filter-select__list {
+        justify-content: flex-end;
+      }
+    }
 
     &-select {
       &__list {
@@ -297,7 +339,6 @@
       }
       &.active-flat{
         background: #F1E0C5;
-        color: #ffffff;
       }
     }
     &__td{

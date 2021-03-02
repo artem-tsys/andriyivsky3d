@@ -22,26 +22,37 @@ class Plannings {
   }
 
   init() {
-    $.ajax(`${defaultModulePath}template/card.php`).then(response => {
-      this.templateCard = JSON.parse(response);
-      this.currentFilterFlatsId$.subscribe(value => {
-        if (_.isArray(value) && value.length > 0) {
-          this.wrapperNode.scrollTop = 0;
-          this.wrapperNode.textContent = '';
-          this.currentShowAmount = 0;
-        } else {
-          return;
-        }
-        this.updateShowFlat(value);
-        this.createListCard(value, this.wrapperNode, 1);
-        paginationScroll(this.wrapperNode, value, this.currentShowAmount, this.createListCard.bind(this));
-        //
+    if (status === 'local') {
+      $.ajax(`${defaultModulePath}template/card.php`).then(response => {
+        this.templateCard = JSON.parse(response);
+        this.subscribeFilterFlat();
+        setTimeout(() => {
+          this.preloader.turnOff($('.js-s3d__select[data-type="plannings"]'));
+          this.preloader.hide();
+        }, 600);
       });
-      setTimeout(() => {
-        this.preloader.turnOff($('.js-s3d__select[data-type="plannings"]'));
-        this.preloader.hide();
-      }, 600);
-    });
+    } else {
+      $.ajax('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        data: { action: 'getCard' },
+      }).then(response => {
+        this.templateCard = JSON.parse(response);
+        this.subscribeFilterFlat();
+        setTimeout(() => {
+          this.preloader.turnOff($('.js-s3d__select[data-type="plannings"]'));
+          this.preloader.hide();
+        }, 600);
+      });
+    }
+
+    // $.ajax(`${defaultModulePath}template/card.php`).then(response => {
+    //   this.templateCard = JSON.parse(response);
+    //
+    //   setTimeout(() => {
+    //     this.preloader.turnOff($('.js-s3d__select[data-type="plannings"]'));
+    //     this.preloader.hide();
+    //   }, 600);
+    // });
 
     this.subject.subscribe(data => {
       updateFlatFavourite(this.wrap, data);
@@ -59,6 +70,22 @@ class Plannings {
 
     this.wrapperNode.addEventListener('scroll', event => {
       paginationScroll(event.target, this.showFlatList, this.currentShowAmount, this.createListCard.bind(this));
+    });
+  }
+
+  subscribeFilterFlat() {
+    this.currentFilterFlatsId$.subscribe(value => {
+      if (_.isArray(value) && value.length > 0) {
+        this.wrapperNode.scrollTop = 0;
+        this.wrapperNode.textContent = '';
+        this.currentShowAmount = 0;
+      } else {
+        return;
+      }
+      this.updateShowFlat(value);
+      this.createListCard(value, this.wrapperNode, 1);
+      paginationScroll(this.wrapperNode, value, this.currentShowAmount, this.createListCard.bind(this));
+      //
     });
   }
 

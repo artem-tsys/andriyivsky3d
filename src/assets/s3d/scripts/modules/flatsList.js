@@ -76,6 +76,7 @@ class FlatsList {
         return;
       }
       const config = this.checkNextFlyby({ type: 'flyby', method: 'search' }, id);
+      console.log(config, id);
       if (config === null) {
         return;
       } else if (config.change) {
@@ -141,7 +142,7 @@ class FlatsList {
     const checked = flat.favourite ? 'checked' : '';
     const tr = document.createElement('div');
     tr.dataset.id = flat.id;
-    tr.classList = 's3d-filter__tr';
+    tr.classList = 's3d-filter__tr js-s3d-filter__tr';
     tr.innerHTML = `
 					<div class="s3d-filter__td">${flat.type}</div>
 					<div class="s3d-filter__td">${flat.rooms}</div>

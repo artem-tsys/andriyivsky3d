@@ -21,21 +21,35 @@ class FavouritesModel extends EventEmitter {
     this.history = config.history;
     this.preloader = preloader();
     this.updateFavourites = this.updateFavourites.bind(this);
+    this.updateFavouritesBlock = this.updateFavouritesBlock.bind(this);
   }
 
   init() {
-    $.ajax(`${defaultModulePath}template/card.php`).then(response => {
-      this.templateCard = JSON.parse(response);
-    });
+    if (status === 'local') {
+      $.ajax(`${defaultModulePath}template/card.php`).then(response => {
+        this.templateCard = JSON.parse(response);
+        this.showSelectFlats();
+        this.updateFavourites();
+        this.updateFavouritesBlock();
+      });
+    } else {
+      $.ajax('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        data: { action: 'getCard' },
+      }).then(response => {
+        this.templateCard = JSON.parse(response);
+        this.showSelectFlats();
+        this.updateFavourites();
+        this.updateFavouritesBlock();
+      });
+    }
 
     // this.currentFilterFlatsId$.subscribe(value => {
     //   // update favourite
     // });
     // sessionStorage.clear()
-    this.showSelectFlats();
-    this.addPulseCssEffect();
 
-    this.updateFavourites();
+    this.addPulseCssEffect();
   }
 
   updateFavourites() {
@@ -188,7 +202,7 @@ class FavouritesModel extends EventEmitter {
 				box-shadow: 0 0 0 rgba(64,81,116, 0.75);
 				animation: pulse 0.4s 1 alternate;
 			}.${this.animationPulseClass}:hover {	animation: none;}
-			/*@-webkit-keyframes ${this.animationPulseClass} {	0% {-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}@keyframes pulse {	0% {	  -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	  box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);		box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);		box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}*/
+			@-webkit-keyframes ${this.animationPulseClass} {	0% {-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-webkit-box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-webkit-box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}@keyframes pulse {	0% {	  -moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	  box-shadow: 0 0 0 0 rgba(255,255,255, 0.4);	}	70% {		-moz-box-shadow: 0 0 0 10px rgba(255,255,255, 0);		box-shadow: 0 0 0 10px rgba(255,255,255, 0);	}	100% {		-moz-box-shadow: 0 0 0 0 rgba(255,255,255, 0);		box-shadow: 0 0 0 0 rgba(255,255,255, 0);	}}
 		</style>
 		`);
   }
@@ -269,7 +283,7 @@ class FavouritesModel extends EventEmitter {
     const speed = this.animationSpeed / 1000 * (this.getSpeedAnimateHeart(distance) / 850);
     // const speed = this.animationSpeed / 1000;
     const tl = new TimelineMax({
-      delay: 0.15,
+      delay: 0,
       repeat: 0,
       paused: true,
       onComplete: () => {

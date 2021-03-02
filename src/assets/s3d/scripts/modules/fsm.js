@@ -267,9 +267,11 @@ function fsm() {
           } else {
             this.emit('animateChangeBlock');
           }
-
           this.preloader.hide();
-          this.favourites.updateFavouritesBlock();
+          console.log('this.fsm.state', this.fsm.state);
+          if (this.favourites.templateCard) {
+            this.favourites.updateFavouritesBlock();
+          }
           this.changeViewBlock(this.fsm.state);
           this.iteratingConfig();
         },

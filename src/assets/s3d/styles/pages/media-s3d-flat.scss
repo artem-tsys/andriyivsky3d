@@ -39,7 +39,7 @@
       &__title{
         font-size: 30px;
       }
-      &__table {
+      &__card {
         padding: 0 50px;
         max-height: calc((var(--vh) * 100) - var(--header-height) - 230px);
       }
@@ -106,7 +106,7 @@
       &__show-3d {
         margin: 0 0 0 20px;
       }
-      &__table {
+      &__card {
         flex: 1 1 auto;
         overflow: auto;
       }
@@ -178,7 +178,7 @@
         padding: 0;
         margin: 15px 0 0 0;
       }
-      &__table {
+      &__card {
         padding: 55px 30px;
       }
       &__compass {
@@ -313,7 +313,7 @@
         margin: 0;
         grid-column: 2;
       }
-      &__table {
+      &__card {
         padding: 0;
       }
       &__left {

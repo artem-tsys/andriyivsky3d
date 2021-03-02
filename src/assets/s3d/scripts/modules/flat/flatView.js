@@ -66,6 +66,7 @@ class FlatView extends EventEmitter {
     model.on('changeClassShow', elem => { this.changeClassShow(elem); });
     model.on('updateImg', data => { this.setNewImage(data); });
     model.on('createRadioElement', data => { this.createRadio(data); });
+    model.on('clearRadioElement', wrap => { this.clearRadio(wrap); });
     model.on('showViewButton', flag => { this.showViewButton(flag); });
     model.on('updateDataFlats', data => { this.updateHoverFlats(data); });
   }
@@ -127,6 +128,10 @@ class FlatView extends EventEmitter {
     $(wrap).append(`<label class="s3d-flat__button js-s3d__radio-${name}" data-type=${type} >
       <input type="radio" name=${name} class="s3d-flat__button-input" value=${type} />
     <span>${text}</span></label>`);
+  }
+  
+  clearRadio(wrap) {
+    $(wrap).html('');
   }
 
   setNewImage(url) {

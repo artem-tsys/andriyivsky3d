@@ -6,8 +6,16 @@ class Helper {
   }
 
   async init() {
-    await $.ajax(`${defaultModulePath}template/helper.php`)
-      .then(helper => { this.helper = JSON.parse(helper); });
+    if (status === 'local') {
+      await $.ajax(`${defaultModulePath}template/helper.php`)
+        .then(helper => { this.helper = JSON.parse(helper); });
+    } else {
+      await $.ajax('/wp-admin/admin-ajax.php', {
+        method: 'POST',
+        data: { action: 'getHelper' },
+      }).then(helper => { this.helper = JSON.parse(helper); });
+    }
+    
     $('.js-s3d__slideModule').append(this.helper);
     await $.ajax(`${defaultStaticPath}configHelper.json`)
       .then(responsive => this.setConfig(responsive));
@@ -58,7 +66,7 @@ class Helper {
     const result = [];
     const wrap = $('.js-s3d__helper__active');
     const helper = $('.js-s3d__helper')[0];
-    
+
     const promise = new Promise(callback => {
       wrap[0].style.opacity = 0;
       helper.style.opacity = 0;

@@ -275,7 +275,7 @@ class AppModel extends EventEmitter {
     const fvController = new FavouritesController(fvModel, fvView);
     this.favourites = fvModel;
     fvModel.init();
-    // this.createStructureSvg()
+    // this.createStructureSvg();
     // this.checkFirstBlock()
     this.checkFirstLoadState();
   }
@@ -380,7 +380,6 @@ class AppModel extends EventEmitter {
     let config;
     let settings = data;
     let nameMethod;
-
     if (_.has(data, 'method') && data.method === 'search' && id) {
       nameMethod = data.method;
     } else if (_.has(data, 'method') && data.method !== 'search') {
@@ -395,7 +394,7 @@ class AppModel extends EventEmitter {
       settings = this.checkNextFlyby(data, id);
       const type = _.has(settings, 'type') ? settings.type : this.defaultFlybySettings.type;
       const flyby = _.has(settings, 'flyby') ? +settings.flyby : this.defaultFlybySettings.flyby;
-      const side = _.has(settings, 'side') ? +settings.side : this.defaultFlybySettings.side;
+      const side = _.has(settings, 'side') ? settings.side : this.defaultFlybySettings.side;
 
       if (settings === null) {
         settings = {
@@ -404,7 +403,6 @@ class AppModel extends EventEmitter {
           side,
         };
       }
-
       config = this.config[type][flyby][side];
       // config = this.config[settings.type || this.defaultFlybySettings.type][+settings.flyby || this.defaultFlybySettings.flyby][settings.side || this.defaultFlybySettings.side];
     } else if (data.type === 'flyby') {
