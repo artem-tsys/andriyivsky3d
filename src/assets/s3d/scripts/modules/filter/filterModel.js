@@ -70,8 +70,10 @@ class FilterModel extends EventEmitter {
   }
 
   changeFilterParam() {
+    addBlur('.js-s3d-filter__table');
+    addBlur('.s3d-pl__right');
     const flats = this.applyFilter(this.getFlat());
-    this.emit('showSelectElement', flats);
+    this.emit('showSelectElements', flats);
   }
 
   // возвращает data-attribute input-а
@@ -205,7 +207,7 @@ class FilterModel extends EventEmitter {
     for (const key in this.filter) {
       const select = this.filter[key];
       if (select.type === 'select') {
-        let { value } = select;
+        let { value } = _.cloneDeep(select);
         if (_.isArray(value) && value.length === 0) {
           for (let i = +this.configProject.rooms.min; i <= +this.configProject.rooms.max; i++) {
             value.push(i);
@@ -268,11 +270,11 @@ class FilterModel extends EventEmitter {
           }
         }
       }
-      
+
       // if (flat[nameFilterFlat.types] !== undefined
       //   && flat[nameFilterFlat.types]) {
       // }
-      
+
       if (flat[nameFilterFlat.house] !== undefined
         && !flat[nameFilterFlat.house]
       ) {
@@ -291,6 +293,7 @@ class FilterModel extends EventEmitter {
       return true;
     });
     this.emit('setAmountSelectFlat', select.length);
+    console.log(select);
     this.updateCurrentFilterFlatsId(select);
     return select;
   }
@@ -300,7 +303,10 @@ class FilterModel extends EventEmitter {
     for (const key in this.filter) {
       switch (this.filter[key].type) {
           case 'select':
-            $(`.js-s3d-filter__${key}--input:checked`).each((i, el) => this.filter[key].value.push($(el).data(key)));
+            $(`.js-s3d-filter__${key}--input:checked`).each((i, el) => {
+              const value = this.filter[key].value.push($(el).data(key));
+              return value;
+            });
             break;
           case 'range':
             this.filter[key].min = this.filter[key].elem.result.from;

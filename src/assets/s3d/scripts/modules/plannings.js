@@ -79,9 +79,10 @@ class Plannings {
         this.wrapperNode.scrollTop = 0;
         this.wrapperNode.textContent = '';
         this.currentShowAmount = 0;
-      } else {
-        return;
       }
+      // else {
+      //   return;
+      // }
       this.updateShowFlat(value);
       this.createListCard(value, this.wrapperNode, 1);
       paginationScroll(this.wrapperNode, value, this.currentShowAmount, this.createListCard.bind(this));
@@ -94,10 +95,11 @@ class Plannings {
   }
 
   createListCard(flats, wrap, amount) {
+    this.wrapperNode.innerHTML = '';
     const arr = flats.reduce((previous, current, index) => {
-      if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
-        previous.push(this.createCard(this.getFlat(+current)));
-      }
+      // if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
+      previous.push(this.createCard(this.getFlat(+current)));
+      // }
       return previous;
     }, []);
     this.currentShowAmount += amount;

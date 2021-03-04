@@ -11,7 +11,7 @@
         background: $color2;
 
         svg {
-          fill: $color1;
+          stroke: $color1;
         }
       }
     }
@@ -72,6 +72,9 @@
         }
       }
       &__button {
+        margin: 0 10px;
+      }
+      &__buttons {
         margin: 0 10px;
       }
       &__link {

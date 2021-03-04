@@ -29,7 +29,6 @@ class InfoBox {
       } else {
         return;
       }
-
       this.history.update({ type: 'flat', method: 'general', id: this.activeFlat });
       this.updateState('static');
 
@@ -50,6 +49,7 @@ class InfoBox {
   changeState(value, flat = null) {
     const id = _.has(flat, 'id') ? _.toNumber(flat.id) : undefined;
     if (this.state === 'active') {
+      console.log(this.state, value);
       if (this.state !== value) {
         return;
       }
@@ -77,6 +77,7 @@ class InfoBox {
   }
 
   dispatch(flat) {
+    console.log('dispatch', this.state);
     switch (this.state) {
         case 'static':
           this.hoverFlatId = null;
@@ -131,6 +132,8 @@ class InfoBox {
     if (_.isUndefined(e)) {
       return;
     }
+    this.infoBox.find('.js-s3d-add__favourites')[0].dataset.id = e.id;
+    this.infoBox.find('.s3d-infoBox__link')[0].dataset.id = e.id;
     this.infoBox.find('.js-s3d-infoBox__table-number')[0].textContent = `${e.number || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-floor')[0].textContent = `${e.floor || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-room')[0].textContent = `${e.rooms || ''}`;

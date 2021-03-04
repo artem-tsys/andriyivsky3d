@@ -129,7 +129,7 @@ class FlatView extends EventEmitter {
       <input type="radio" name=${name} class="s3d-flat__button-input" value=${type} />
     <span>${text}</span></label>`);
   }
-  
+
   clearRadio(wrap) {
     $(wrap).html('');
   }

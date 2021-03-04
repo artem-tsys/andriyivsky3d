@@ -78,7 +78,8 @@ class FilterView extends EventEmitter {
   showSvgSelect(data) {
     $('#js-s3d__wrapper polygon.active-selected').removeClass('active-selected');
     data.forEach(flat => {
-      $(`#js-s3d__wrapper polygon[data-id=${flat.id || +flat}]`).addClass('active-selected');
+      const id = _.has(flat.id) ? flat.id : flat
+      $(`#js-s3d__wrapper polygon[data-id=${id}]`).addClass('active-selected');
     });
   }
 

@@ -41,9 +41,11 @@ class FlatsList {
         this.wrapperNode.scrollTop = 0;
         this.wrapperNode.textContent = '';
         this.currentShowAmount = 0;
-      } else {
-        return;
       }
+      // else {
+      //   return;
+      // }
+      console.log('flat list', value);
       this.updateShowFlat(value);
       this.createListFlat(value, this.wrapperNode, 30);
     });
@@ -126,10 +128,11 @@ class FlatsList {
   }
 
   createListFlat(flats, wrap, amount) {
+    this.wrapperNode.innerHTML = '';
     const arr = flats.reduce((previous, current, index) => {
-      if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
-        previous.push(this.createElem(this.getFlat(+current)));
-      }
+      // if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
+      previous.push(this.createElem(this.getFlat(+current)));
+      // }
       return previous;
     }, []);
     this.currentShowAmount += amount;

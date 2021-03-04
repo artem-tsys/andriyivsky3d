@@ -232,7 +232,8 @@ class AppModel extends EventEmitter {
 
   checkFirstBlock() {
     const config = this.getNameLoadState();
-    this.history.history = config;
+    // this.history.history = config;
+    this.history.update(config);
     this.updateFsm(config, config.id);
   }
 
@@ -380,6 +381,8 @@ class AppModel extends EventEmitter {
     let config;
     let settings = data;
     let nameMethod;
+    console.log('data', data);
+    console.log('id', id);
     if (_.has(data, 'method') && data.method === 'search' && id) {
       nameMethod = data.method;
     } else if (_.has(data, 'method') && data.method !== 'search') {

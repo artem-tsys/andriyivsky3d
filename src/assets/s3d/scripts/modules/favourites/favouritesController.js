@@ -21,8 +21,6 @@ class FavouritesController {
 
     view.on('clickElementHandler', event => {
       if (event.target.classList.contains('js-s3d-card__close') || event.target.classList.contains('js-s3d-add__favourites')) return;
-      console.log(event.target);
-      console.log(event.target.classList.contains('js-s3d-add__favourites'));
       model.selectElementHandler(+event.currentTarget.dataset.id);
     });
   }

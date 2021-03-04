@@ -2,7 +2,7 @@
   .s3d {
     &__svgWrap {
       svg {
-        cursor: url("../images/icon/cursor.png");
+        cursor: url("../images/icon/cursor.png"), auto;
       }
     }
   }
