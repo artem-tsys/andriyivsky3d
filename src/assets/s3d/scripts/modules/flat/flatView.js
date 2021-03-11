@@ -86,13 +86,14 @@ class FlatView extends EventEmitter {
     wrap.find('.js-s3d-add__favourites')[0].dataset.id = id;
     $('polygon.u-svg-plan--active').removeClass('u-svg-plan--active');
     wrap.find(`.s3d-flat__floor [data-id=${id}]`).addClass('u-svg-plan--active');
-
-    if (flat && flat.pdf) {
-      wrap.find('.js-s3d__create-pdf')[0].style.display = '';
-      wrap.find('.js-s3d__create-pdf')[0].href = flat.pdf;
-    } else {
-      wrap.find('.js-s3d__create-pdf')[0].style.display = 'none';
-    }
+    wrap.find('.js-s3d__create-pdf')[0].dataset.id = id;
+    // console.log(flat);
+    // if (flat && flat.pdf) {
+    //   wrap.find('.js-s3d__create-pdf')[0].style.display = '';
+    //   wrap.find('.js-s3d__create-pdf')[0].href = flat.pdf;
+    // } else {
+    //   wrap.find('.js-s3d__create-pdf')[0].style.display = 'none';
+    // }
   }
 
   changeClassShow(config) {

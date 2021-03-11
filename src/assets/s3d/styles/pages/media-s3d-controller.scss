@@ -62,7 +62,6 @@
     &-ctr {
       grid-gap: 15px;
       grid-template-rows: var(--header-height) auto auto 1fr auto 50px;
-      //grid-template-columns: 16.666% 16.666% 16.666% 16.666% 16.666% 16.666%;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
       grid-template-areas: '. . . back . .'
       'filter filter . . favourite favourite'

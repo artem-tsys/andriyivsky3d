@@ -37,15 +37,11 @@ class FlatsList {
     });
 
     this.currentFilterFlatsId$.subscribe(value => {
-      if (_.isArray(value) && value.length > 0) {
-        this.wrapperNode.scrollTop = 0;
-        this.wrapperNode.textContent = '';
-        this.currentShowAmount = 0;
-      }
-      // else {
-      //   return;
+      // if (_.isArray(value) && value.length > 0) {
+      this.wrapperNode.scrollTop = 0;
+      this.wrapperNode.textContent = '';
+      this.currentShowAmount = 0;
       // }
-      console.log('flat list', value);
       this.updateShowFlat(value);
       this.createListFlat(value, this.wrapperNode, 30);
     });
@@ -67,7 +63,7 @@ class FlatsList {
 
     $('.js-s3d-filter__mini-info__button').on('click', event => {
       $('.js-s3d-filter').removeClass('s3d-filter__scroll-active');
-      this.filterHide = false;
+      setTimeout(() => this.filterHide = false, 500);
     });
 
     $('.js-s3d-filter__body').on('click', '.s3d-filter__tr', event => {
@@ -78,7 +74,6 @@ class FlatsList {
         return;
       }
       const config = this.checkNextFlyby({ type: 'flyby', method: 'search' }, id);
-      console.log(config, id);
       if (config === null) {
         return;
       } else if (config.change) {
@@ -119,20 +114,16 @@ class FlatsList {
     $(`.js-s3d-filter__body [data-id=${id}]`).addClass('active-flat');
   }
 
-  checkFlyby() {
-
-  }
-
   updateShowFlat(list) {
     this.showFlatList = list;
   }
 
   createListFlat(flats, wrap, amount) {
-    this.wrapperNode.innerHTML = '';
+    // this.wrapperNode.innerHTML = '';
     const arr = flats.reduce((previous, current, index) => {
-      // if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
-      previous.push(this.createElem(this.getFlat(+current)));
-      // }
+      if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
+        previous.push(this.createElem(this.getFlat(+current)));
+      }
       return previous;
     }, []);
     this.currentShowAmount += amount;
@@ -148,9 +139,9 @@ class FlatsList {
     tr.classList = 's3d-filter__tr js-s3d-filter__tr';
     tr.innerHTML = `
 					<div class="s3d-filter__td">${flat.type}</div>
-					<div class="s3d-filter__td">${flat.rooms}</div>
+<!--					<div class="s3d-filter__td">${flat.rooms}</div>-->
 					<div class="s3d-filter__td">${flat.floor}</div>
-					<div class="s3d-filter__td">${flat.all_room} m<sub>2</sub></div>
+					<div class="s3d-filter__td">${flat.all_room} m<sup>2</sup></div>
 					<div class="s3d-filter__td">
 						<label data-id="${flat.id}" class="s3d-filter__table__label js-s3d-add__favourites">
 							<input type="checkbox" ${checked}>

@@ -20,6 +20,7 @@ class InfoBox {
     this.createInfo();
     this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
       this.updateState('static');
+      this.removeSvgFlatActive();
     });
 
     this.infoBox.on('click', '.s3d-infoBox__link', event => {
@@ -36,6 +37,10 @@ class InfoBox {
         type: 'flat', method: 'general',
       }, this.activeFlat);
     });
+  }
+
+  removeSvgFlatActive() {
+    $('.js-s3d__svgWrap .active-flat').removeClass('active-flat');
   }
 
   // updateState use only from this class. change state without check exceptions
@@ -132,11 +137,12 @@ class InfoBox {
     if (_.isUndefined(e)) {
       return;
     }
+
     this.infoBox.find('.js-s3d-add__favourites')[0].dataset.id = e.id;
     this.infoBox.find('.s3d-infoBox__link')[0].dataset.id = e.id;
     this.infoBox.find('.js-s3d-infoBox__table-number')[0].textContent = `${e.number || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-floor')[0].textContent = `${e.floor || ''}`;
-    this.infoBox.find('.js-s3d-infoBox__table-room')[0].textContent = `${e.rooms || ''}`;
+    // this.infoBox.find('.js-s3d-infoBox__table-room')[0].textContent = `${e.rooms || ''}`;
     this.infoBox.find('.js-s3d-infoBox__type span')[0].textContent = `${e.type || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-area')[0].textContent = `${e['all_room'] || ''}`;
     this.infoBox.find('.js-s3d-infoBox__image')[0].src = e['img_small'] || `${defaultProjectPath}/s3d/images/examples/no-image.png'}`;
