@@ -25,10 +25,6 @@
                   <td class="s3d-card__value" data-key="floor"></td>
                 </tr>
                 <tr class="s3d-card__row">
-                  <td class="s3d-card__name">Комнаты</td>
-                  <td class="s3d-card__value" data-key="rooms"></td>
-                </tr>
-                <tr class="s3d-card__row">
                   <td class="s3d-card__name">Площадь м<sup>2</sup></td>
                   <td class="s3d-card__value" data-key="area"</td>
                 </tr>

@@ -154,6 +154,7 @@ class FavouritesModel extends EventEmitter {
   updateFavouritesBlock() {
     this.emit('clearAllHtmlTag', '.js-s3d-fv__list .js-s3d-card');
     const favourites = this.getFavourites();
+    console.log(favourites);
     this.emit('updateFavouriteAmount', favourites.length);
     const html = favourites.map(el => this.createElemHtml(this.getFlat(el)));
     this.emit('setInPageHtml', html);
@@ -183,9 +184,9 @@ class FavouritesModel extends EventEmitter {
     div.querySelector('[data-key="type"]').innerHTML = el.type;
     div.querySelector('[data-key="number"]').innerHTML = el.number;
     div.querySelector('[data-key="floor"]').innerHTML = el.floor;
-    div.querySelector('[data-key="rooms"]').innerHTML = el.rooms;
+    // div.querySelector('[data-key="rooms"]').innerHTML = el.rooms;
     div.querySelector('[data-key="area"]').innerHTML = el['all_room'];
-    div.querySelector('[data-key="src"]').src = el['img_small'];
+    div.querySelector('[data-key="src"]').src = el['img_small'] ? el['img_small'] : `${defaultProjectPath}/s3d/images/examples/no-image.png`;
     div.querySelector('[data-key="checked"]').checked = true;
     return div;
   }
@@ -212,8 +213,8 @@ class FavouritesModel extends EventEmitter {
     const iconToAnimate = target.querySelector('svg');
     let distance;
     if (document.documentElement.clientWidth < 576) {
-      distance = this.getBetweenDistance(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate);
-      this.animateFavouriteElement(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate, distance, reverse);
+      // distance = this.getBetweenDistance(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate);
+      // this.animateFavouriteElement(document.querySelector('.s3d-mobile-only[data-type="favourites"]'), iconToAnimate, distance, reverse);
     } else {
       switch (currentScreen) {
           case 'flyby':

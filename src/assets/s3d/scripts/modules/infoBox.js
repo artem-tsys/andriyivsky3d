@@ -54,7 +54,6 @@ class InfoBox {
   changeState(value, flat = null) {
     const id = _.has(flat, 'id') ? _.toNumber(flat.id) : undefined;
     if (this.state === 'active') {
-      console.log(this.state, value);
       if (this.state !== value) {
         return;
       }
@@ -82,11 +81,10 @@ class InfoBox {
   }
 
   dispatch(flat) {
-    console.log('dispatch', this.state);
     switch (this.state) {
         case 'static':
           this.hoverFlatId = null;
-          this.infoBox.removeClass('s3d-infoBox-active');
+          this.infoBox.removeClass('s3d-infoBox-active ');
           this.infoBox.removeClass('s3d-infoBox-hover');
           break;
         case 'hover':
@@ -142,7 +140,6 @@ class InfoBox {
     this.infoBox.find('.s3d-infoBox__link')[0].dataset.id = e.id;
     this.infoBox.find('.js-s3d-infoBox__table-number')[0].textContent = `${e.number || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-floor')[0].textContent = `${e.floor || ''}`;
-    // this.infoBox.find('.js-s3d-infoBox__table-room')[0].textContent = `${e.rooms || ''}`;
     this.infoBox.find('.js-s3d-infoBox__type span')[0].textContent = `${e.type || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-area')[0].textContent = `${e['all_room'] || ''}`;
     this.infoBox.find('.js-s3d-infoBox__image')[0].src = e['img_small'] || `${defaultProjectPath}/s3d/images/examples/no-image.png'}`;

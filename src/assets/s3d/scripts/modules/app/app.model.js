@@ -3,7 +3,7 @@ import $ from 'jquery';
 import _ from 'lodash';
 import { fsm, fsmConfig } from '../fsm';
 import {
-  addBlur, unActive, preloader, updateFlatFavourite, compass, debounce,
+  preloader, debounce,
 } from '../general/General';
 import asyncRequest from '../async/async';
 import EventEmitter from '../eventEmitter/EventEmitter';
@@ -43,7 +43,7 @@ class AppModel extends EventEmitter {
     this.compass = this.compass.bind(this);
     this.updateCurrentFilterFlatsId = this.updateCurrentFilterFlatsId.bind(this);
     this.currentFilterFlatsId$ = new BehaviorSubject([]);
-    this.hoverFlatId$ = new BehaviorSubject(3);
+    this.hoverFlatId$ = new BehaviorSubject(null);
     this.flatList = {};
     this.subject = new BehaviorSubject(this.flatList);
     this.fsmConfig = fsmConfig();
@@ -96,7 +96,7 @@ class AppModel extends EventEmitter {
       history: this.history,
     });
     this.setDefaultConfigFlyby(this.config.flyby);
-    this.helper = new Helper()
+    this.helper = new Helper();
     // window.localStorage.removeItem('info')
 
     // this.helpsInfo();
@@ -237,18 +237,39 @@ class AppModel extends EventEmitter {
     this.updateFsm(config, config.id);
   }
 
-  flatJsonIsLoaded(data) {
+  prepareFlats(flats) {
+    const nameFilterFlat = {
+      all_room: 'area',
+      floor: 'floor',
+      rooms: 'rooms',
+    };
     // filter only flats  id = 1
-    const currentFilterFlatsId = data.reduce((previous, current) => {
+    const currentFilterFlatsId = flats.reduce((previous, current) => {
       // if (current['type_object'] === '1') {
-      const flat = current;
-      flat.id = +flat.id;
+      const flat = _.transform(current, (acc, value, key) => {
+        const newValue = _.toNumber(value);
+        const params = acc;
+        let currentKey = key;
+        if (_.has(nameFilterFlat, currentKey)) {
+          currentKey = nameFilterFlat[currentKey];
+        }
+        if (!_.isNaN(newValue)) {
+          params[currentKey] = newValue;
+        } else {
+          params[currentKey] = value;
+        }
+        return params;
+      });
       flat['favourite'] = false;
-      this.flatList[+flat.id] = flat;
-      previous.push(+flat.id);
-      // }
-      return previous;
-    }, []);
+      const key = flat.id;
+      return { ...previous, [key]: flat };
+    }, {});
+    return currentFilterFlatsId;
+  }
+
+  flatJsonIsLoaded(data) {
+    this.flatList = this.prepareFlats(data);
+    const currentFilterFlatsId = Object.keys(this.flatList);
     this.currentFilterFlatsId$.next(currentFilterFlatsId);
 
     const generalConfig = {
@@ -381,8 +402,6 @@ class AppModel extends EventEmitter {
     let config;
     let settings = data;
     let nameMethod;
-    console.log('data', data);
-    console.log('id', id);
     if (_.has(data, 'method') && data.method === 'search' && id) {
       nameMethod = data.method;
     } else if (_.has(data, 'method') && data.method !== 'search') {

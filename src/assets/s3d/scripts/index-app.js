@@ -54,7 +54,7 @@ async function init() {
     const appController = new AppController(app, appView);
     app.init();
 
-    $(document).resize(() => {
+    $(window).resize(() => {
       document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
     });
   });

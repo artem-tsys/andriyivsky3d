@@ -71,7 +71,7 @@
     overflow: hidden;
     transform: translate(100%, 0);
     z-index: 999;
-    transition: transform 0.4s ease-in 0.3s;
+    transition: transform 0.3s ease-in;
 
     // default change from js
     pointer-events: none;
@@ -306,7 +306,7 @@
     &.s3d-infoBox-active {
       pointer-events: painted;
       transform: translate(0, 0);
-      transition: transform 0.4s ease-in;
+      transition: transform 0.4s ease-in, height 0.4s ease-in;
       .s3d-infoBox {
         &__close {
           pointer-events: painted;

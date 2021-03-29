@@ -69,6 +69,8 @@ class FlatView extends EventEmitter {
     model.on('clearRadioElement', wrap => { this.clearRadio(wrap); });
     model.on('showViewButton', flag => { this.showViewButton(flag); });
     model.on('updateDataFlats', data => { this.updateHoverFlats(data); });
+    model.on('disablePdf', () => { this.disablePdfClick(); });
+    model.on('enabledPdf', () => { this.enabledPdfClick(); });
   }
 
   setHtml(content) {
@@ -144,6 +146,14 @@ class FlatView extends EventEmitter {
     $('.js-s3d__wrapper__flat [data-type="type"]').html(data['type']);
     $('.js-s3d__wrapper__flat [data-type="flat"]').html(data['rooms']);
     $('.js-s3d__wrapper__flat [data-type="area"]').html(data['all_room']);
+  }
+
+  disablePdfClick() {
+    $('.js-s3d__create-pdf').addClass('s3d-disable__link');
+  }
+
+  enabledPdfClick() {
+    $('.js-s3d__create-pdf').removeClass('s3d-disable__link');
   }
 }
 

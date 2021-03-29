@@ -192,6 +192,7 @@ class FlatModel extends EventEmitter {
   }
 
   getPdfLink(id) {
+    this.emit('disablePdf');
     $.ajax('/wp-admin/admin-ajax.php', {
       method: 'POST',
       data: {
@@ -203,6 +204,7 @@ class FlatModel extends EventEmitter {
       .then(url => {
         document.body.insertAdjacentHTML('beforebegin', `<a class="initClickPdf" target="_blank" href="${url}"></a>`);
         document.querySelector('.initClickPdf').click();
+        this.emit('enabledPdf');
       });
   }
 }

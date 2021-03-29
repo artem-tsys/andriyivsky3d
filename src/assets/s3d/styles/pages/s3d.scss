@@ -198,6 +198,11 @@ body {
       width: 100%;
     }
   }
+
+  &-disable__link{
+    pointer-events: none;
+    cursor: none;
+  }
 }
 
 #js-s3d{

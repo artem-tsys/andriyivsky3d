@@ -86,7 +86,6 @@ class AppView extends EventEmitter {
   }
 
   animateBlock() {
-    console.trace();
     const layers = document.querySelectorAll('.translate-layer');
     layers[0].classList.remove('translate-layer__down', 'translate-layer__up', 'active');
     layers[0].classList.add('translate-layer__down');

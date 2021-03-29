@@ -104,7 +104,7 @@ echo json_encode('<div class="s3d-flat js-s3d-flat">
           </div>
         </div>
         <div class="s3d-flat__links">
-            <label data-id="18" class="s3d-flat__like js-s3d-add__favourites">
+            <label data-id="12141" class="s3d-flat__like js-s3d-add__favourites">
                 <input type="checkbox">
                 <svg role="presentation"><use xlink:href="#icon-favourites"></use></svg>
                 добавить в избранное

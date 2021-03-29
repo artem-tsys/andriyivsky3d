@@ -2,9 +2,8 @@ import $ from 'jquery';
 import { BehaviorSubject } from 'rxjs';
 import _ from 'lodash';
 import EventEmitter from '../eventEmitter/EventEmitter';
-import { isBrowser, isDevice } from '../checkDevice';
 import {
-  addBlur, unActive, preloader, updateFlatFavourite, compass, debounce,
+  preloader, debounce,
 } from '../general/General';
 
 class SliderModel extends EventEmitter {
@@ -162,9 +161,6 @@ class SliderModel extends EventEmitter {
   }
 
   init(id, slide) {
-    // if (isDevice('ios')) {
-    //   this.mouseSpeed = 0.5;
-    // }
     if (id && slide && slide.length > 0) {
       this.activeElem = +slide[0];
       this.activeFlat = +id;
