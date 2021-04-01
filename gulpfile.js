@@ -92,10 +92,10 @@ const paths = {
     src: './src/assets/s3d/scripts/gulp-modules/*.js',
     dest: `./wp-content/themes/${projectName}/assets/s3d/scripts/`,
   },
-  libs: {
-    src: './src/assets/s3d/scripts/libs/libs.js',
-    dest: './src/assets/s3d/scripts/gulp-modules/',
-  },
+  // libs: {
+  //   src: './src/assets/s3d/scripts/libs/libs.js',
+  //   dest: './src/assets/s3d/scripts/gulp-modules/',
+  // },
   static: {
     src: './src/static/**/*.*',
     dest: `./wp-content/themes/${projectName}/static/`,
@@ -119,7 +119,7 @@ function watch() {
   gulp.watch(paths.ts.src, testJsLint);
   gulp.watch(paths.images.src, images);
   gulp.watch(paths.fonts.src, fonts);
-  gulp.watch(paths.libs.src, libs);
+  // gulp.watch(paths.libs.src, libs);
   gulp.watch(paths.static.src, staticFolder);
   gulp.watch('./src/pug/**/*.html', templates);
   gulp.watch('./src/assets/svg-sprite/*.*', svgSprite);
@@ -281,16 +281,16 @@ function typeScript() {
 }
 
 
-// libs-scripts
-function libs() {
-  return gulp.src(paths.libs.src)
-    .pipe(importFile({ //
-      prefix: '@@', // импортим все файлы, описанные в результируещем js
-      basepath: '@file', //
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest(paths.libs.dest));
-}
+// // libs-scripts
+// function libs() {
+//   return gulp.src(paths.libs.src)
+//     .pipe(importFile({ //
+//       prefix: '@@', // импортим все файлы, описанные в результируещем js
+//       basepath: '@file', //
+//     }))
+//     .pipe(uglify())
+//     .pipe(gulp.dest(paths.libs.dest));
+// }
 
 
 exports.templates = templates;
@@ -316,7 +316,7 @@ exports.images = images;
 exports.clean = clean;
 exports.fonts = fonts;
 exports.svgSprite = svgSprite;
-exports.libs = libs;
+// exports.libs = libs;
 exports.staticFolder = staticFolder;
 exports.watchScssTemplates = watchScssTemplates;
 
@@ -325,7 +325,7 @@ gulp.task('default', gulp.series(
   watchScssTemplates,
   svgSprite,
   clean,
-  libs,
+  // libs,
   ...additionalTask,
   gulp.parallel(styles, phpTemplates, templates, fonts, gulpModules, testJsLint, images, staticFolder),
   gulp.parallel(watch, server),

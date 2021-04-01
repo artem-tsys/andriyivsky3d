@@ -32,11 +32,10 @@ class FlatsList {
     });
 
     this.currentFilterFlatsId$.subscribe(value => {
-      // if (_.isArray(value) && value.length > 0) {
       this.wrapperNode.scrollTop = 0;
       this.wrapperNode.textContent = '';
       this.currentShowAmount = 0;
-      // }
+
       this.updateShowFlat(value);
       this.createListFlat(value, this.wrapperNode, 30);
     });
@@ -48,17 +47,17 @@ class FlatsList {
     this.wrapperNode.addEventListener('scroll', event => {
       if (event.target.scrollTop > 50 && !this.filterHide) {
         $('.js-s3d-filter').addClass('s3d-filter__scroll-active');
-        setTimeout(() => this.filterHide = true, 500);
+        setTimeout(() => { this.filterHide = true; }, 500);
       } else if (event.target.scrollTop < 50 && this.filterHide) {
         $('.js-s3d-filter').removeClass('s3d-filter__scroll-active');
-        setTimeout(() => this.filterHide = false, 500);
+        setTimeout(() => { this.filterHide = false; }, 500);
       }
       paginationScroll(event.target, this.showFlatList, this.currentShowAmount, this.createListFlat.bind(this));
     });
 
     $('.js-s3d-filter__mini-info__button').on('click', event => {
       $('.js-s3d-filter').removeClass('s3d-filter__scroll-active');
-      setTimeout(() => this.filterHide = false, 500);
+      setTimeout(() => { this.filterHide = false; }, 500);
     });
 
     $('.js-s3d-filter__body').on('click', '.s3d-filter__tr', event => {
@@ -113,7 +112,6 @@ class FlatsList {
   }
 
   createListFlat(flats, wrap, amount) {
-    // this.wrapperNode.innerHTML = '';
     const arr = flats.reduce((previous, current, index) => {
       if (index >= this.currentShowAmount && index < (this.currentShowAmount + amount)) {
         previous.push(this.createElem(this.getFlat(+current)));

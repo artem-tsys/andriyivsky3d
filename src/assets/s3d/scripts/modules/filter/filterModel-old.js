@@ -335,4 +335,4 @@ class FilterModel extends EventEmitter {
   }
 }
 
-export default FilterModelOld;
+export default FilterModel;

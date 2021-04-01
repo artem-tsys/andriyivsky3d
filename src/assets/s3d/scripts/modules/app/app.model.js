@@ -117,13 +117,23 @@ class AppModel extends EventEmitter {
   }
 
   parseUrl() {
+    const parseUrl = new URL(window.location);
+    const { searchParams } = parseUrl;
+    const parseSearchParam = Object.fromEntries(searchParams);
     const url = window.location.search.replace(/(\?|#)/, '').split('&');
-    return url.reduce((previous, current) => {
+    const newUrl = url.reduce((previous, current) => {
       const result = previous;
       const elem = current.split('=');
       result[elem[0]] = elem[1];
       return result;
     }, {});
+    console.log('parseUrl', parseUrl);
+    console.log('searchParams', searchParams);
+    console.log('parseSearchParam', parseSearchParam);
+
+    console.log('old', newUrl);
+    return parseSearchParam;
+    // return newUrl;
   }
 
   checkFirstLoadState() {
@@ -242,6 +252,7 @@ class AppModel extends EventEmitter {
       all_room: 'area',
       floor: 'floor',
       rooms: 'rooms',
+      type_object: 'types',
     };
     // filter only flats  id = 1
     const currentFilterFlatsId = flats.reduce((previous, current) => {

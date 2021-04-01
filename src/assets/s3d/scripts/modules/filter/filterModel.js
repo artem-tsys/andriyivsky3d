@@ -6,6 +6,8 @@ import {
   addBlur, debounce,
 } from '../general/General';
 
+// for update filter params. set new nameParam in functions (getTypeFilterParam, getMinMaxParam )
+
 class FilterModel extends EventEmitter {
   constructor(config) {
     super();
@@ -61,7 +63,7 @@ class FilterModel extends EventEmitter {
     const data = Object.keys(flats);
     const configProject = data.reduce((acc, key) => {
       const el = flats[key];
-      const keysFilter = ['area', 'floor', 'rooms'];
+      const keysFilter = ['area', 'floor', 'types'];
       const config = keysFilter.reduce((accKeys, name) => {
         if (!_.has(el, name)) {
           return accKeys;
@@ -189,7 +191,7 @@ class FilterModel extends EventEmitter {
   }
 
   getTypeFilterParam(name) {
-    const filterName = { range: ['area', 'floor'], checkbox: ['rooms'] };
+    const filterName = { range: ['area', 'floor'], checkbox: ['types'] };
     if (filterName.checkbox.includes(name)) {
       return 'checkbox';
     } else if (filterName.range.includes(name)) {
