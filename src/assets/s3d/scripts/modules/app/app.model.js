@@ -117,23 +117,9 @@ class AppModel extends EventEmitter {
   }
 
   parseUrl() {
-    const parseUrl = new URL(window.location);
-    const { searchParams } = parseUrl;
+    const { searchParams } = new URL(window.location);
     const parseSearchParam = Object.fromEntries(searchParams);
-    const url = window.location.search.replace(/(\?|#)/, '').split('&');
-    const newUrl = url.reduce((previous, current) => {
-      const result = previous;
-      const elem = current.split('=');
-      result[elem[0]] = elem[1];
-      return result;
-    }, {});
-    console.log('parseUrl', parseUrl);
-    console.log('searchParams', searchParams);
-    console.log('parseSearchParam', parseSearchParam);
-
-    console.log('old', newUrl);
     return parseSearchParam;
-    // return newUrl;
   }
 
   checkFirstLoadState() {
