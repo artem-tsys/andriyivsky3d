@@ -122,7 +122,7 @@ class SliderModel extends EventEmitter {
     const id = +event.target.dataset.id;
     this.infoBox.changeState('active', this.getFlat(id));
     this.activeFlat = +id;
-    this.hoverFlatId$.next(_.toNumber(id));
+    this.hoverFlatUpdate(_.toNumber(id));
   }
 
   keyPressHandler(event) {
@@ -164,7 +164,8 @@ class SliderModel extends EventEmitter {
     if (id && slide && slide.length > 0) {
       this.activeElem = +slide[0];
       this.activeFlat = +id;
-      this.hoverFlatId$.next(+id);
+
+      this.hoverFlatUpdate(+id);
       this.emit('changeFlatActive', id);
     }
 
@@ -346,7 +347,7 @@ class SliderModel extends EventEmitter {
       this.checkDirectionRotate(undefined, pointsSlide);
     }
     this.activeFlat = +id;
-    this.hoverFlatId$.next(+id);
+    this.hoverFlatUpdate(+id);
     this.emit('changeFlatActive', +id);
     this.scrollWrapToActiveFlat(this.determinePositionActiveFlat(id, pointsSlide[0]));
     this.infoBox.changeState('active', this.getFlat(+id));
@@ -394,10 +395,15 @@ class SliderModel extends EventEmitter {
     this.isRotating$.next(false);
     if (flatId) {
       this.activeFlat = +flatId;
-      this.hoverFlatId$.next(+flatId);
+      this.hoverFlatUpdate(+flatId);
       this.emit('changeFlatActive', +flatId);
       this.infoBox.changeState('active', this.getFlat(+flatId));
     }
+  }
+
+  hoverFlatUpdate(id) {
+    this.hoverFlatId$.next(id);
+    this.infoBox.updateHoverFlat(id);
   }
 
   checkDirectionRotate(data, points = this.controlPoint) {

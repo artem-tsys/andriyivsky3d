@@ -61,7 +61,6 @@ class AppModel extends EventEmitter {
   selectSlideHandler(event) {
     const { type, flyby, side } = event.currentTarget.dataset;
     if (type && (type !== this.fsm.state || flyby !== this.fsm.settings.flyby || side !== this.fsm.settings.side)) {
-    // if (type && type !== this.fsm.state) {
       this.updateHistory({
         type, flyby, side, method: 'general',
       });
@@ -94,6 +93,7 @@ class AppModel extends EventEmitter {
       activeFlat: this.activeFlat,
       updateFsm: this.updateFsm,
       history: this.history,
+      hoverFlatId$: this.hoverFlatId$,
     });
     this.setDefaultConfigFlyby(this.config.flyby);
     this.helper = new Helper();
@@ -186,24 +186,6 @@ class AppModel extends EventEmitter {
 
   checkFlatInSVG(id) { // получает id квартиры, отдает объект с ключами где есть квартиры
     const flyby = this.structureFlats;
-    // array
-    // const result = []
-    // for (const num in flyby) {
-    //   const obj = {
-    //     type: 'flyby',
-    //     flyby: num,
-    //   }
-    //   for (const side in flyby[num]) {
-    //     const type = flyby[num][side]
-    //     obj['side'] = side
-    //     for (const slide in type) {
-    //       if (type[slide].includes(+id)) {
-    //         obj['slide'] = slide
-    //         result.push(obj)
-    //       }
-    //     }
-    //   }
-    // }
 
     // object
     const result = {};
