@@ -3,9 +3,8 @@ import $ from 'jquery';
 class InfoBox {
   constructor(data) {
     this.infoBox = '';
-    this.infoBoxStateActive = false;
-    this.infoBoxShow = true;
     this.hoverFlatId = null;
+    this.hoverFlatId$ = data.hoverFlatId$;
     this.activeFlat = data.activeFlat;
     this.updateFsm = data.updateFsm;
     this.state = 'static';
@@ -21,6 +20,7 @@ class InfoBox {
     this.infoBox.on('click', '.js-s3d-infoBox__close', () => {
       this.updateState('static');
       this.removeSvgFlatActive();
+      this.updateHoverFlat(null);
     });
 
     this.infoBox.on('click', '.s3d-infoBox__link', event => {
@@ -41,6 +41,10 @@ class InfoBox {
 
   removeSvgFlatActive() {
     $('.js-s3d__svgWrap .active-flat').removeClass('active-flat');
+  }
+
+  updateHoverFlat(id) {
+    this.hoverFlatId$.next(id);
   }
 
   // updateState use only from this class. change state without check exceptions
@@ -141,7 +145,7 @@ class InfoBox {
     this.infoBox.find('.js-s3d-infoBox__table-number')[0].textContent = `${e.number || ''}`;
     this.infoBox.find('.js-s3d-infoBox__table-floor')[0].textContent = `${e.floor || ''}`;
     this.infoBox.find('.js-s3d-infoBox__type span')[0].textContent = `${e.type || ''}`;
-    this.infoBox.find('.js-s3d-infoBox__table-area')[0].textContent = `${e['all_room'] || ''}`;
+    this.infoBox.find('.js-s3d-infoBox__table-area')[0].textContent = `${e.area || ''}`;
     this.infoBox.find('.js-s3d-infoBox__image')[0].src = e['img_small'] || `${defaultProjectPath}/s3d/images/examples/no-image.png'}`;
     this.infoBox.find('.js-s3d-add__favourites input')[0].checked = e.favourite || false;
   }

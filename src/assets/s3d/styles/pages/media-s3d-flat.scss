@@ -41,17 +41,16 @@
       }
       &__card {
         padding: 0 50px;
-        max-height: calc((var(--vh) * 100) - var(--header-height) - 230px);
+        //max-height: calc((var(--vh) * 100) - var(--header-height) - 230px);
       }
       &__left {
         &-buttons {
+          height: 164px;
+          flex: 0 0 164px;
           width: calc(100% - 160px);
           margin: auto 0 0 160px;
         }
       }
-      //&__list {
-      //  padding: 17px 30px 17px 0;
-      //}
       &__el {
         padding: 10px 0;
         font-size: 12px;
@@ -64,7 +63,6 @@
         }
       }
       &__callback {
-        //max-width: 236px;
         font-size: 16px;
       }
       &__compass {
@@ -168,6 +166,8 @@
         padding: var(--header-height) 0 0 0;
         &-buttons {
           margin: 0;
+          height: initial;
+          flex: 0 0 auto;
           width: 100%;
         }
       }

@@ -209,15 +209,6 @@ function staticFolder() {
 // svg-sprite
 function svgSprite() {
   return gulp.src(paths.svgSprite.src)
-  // .pipe(cheerio({
-  // 	run: function ($) {
-  // 		$('[fill^="#"]').removeAttr('fill');
-  // 		$('[style]').removeAttr('style');
-  // 	},
-  // 	parserOptions: {
-  // 		xmlMode: false
-  // 	}
-  // }))
     .pipe(svgSprites({
       mode: 'symbols',
       preview: false,
