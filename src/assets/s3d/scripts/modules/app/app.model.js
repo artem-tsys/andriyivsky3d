@@ -418,6 +418,7 @@ class AppModel extends EventEmitter {
 
     if (id) {
       this.activeFlat = +id;
+      config.flatId = +id;
     }
 
     config.type = data.type;
@@ -435,7 +436,7 @@ class AppModel extends EventEmitter {
     config.updateCurrentFilterFlatsId = this.updateCurrentFilterFlatsId;
     config.history = this.history;
     config.infoBox = this.infoBox;
-    config.flatId = +id;
+
     this.fsm.dispatch(settings, nameMethod, this, config);
   }
 
