@@ -63,6 +63,21 @@
       //  top: calc(var(--header-height) +  40px);
       //  right: 50px;
       }
+
+      &[data-type="plannings"] {
+        .s3d-filter__table {
+          display: none;
+        }
+        .s3d-filter__bg {
+          display: inline-block;
+        }
+        .s3d-filter__amount-flat {
+          display: none;
+        }
+        .s3d-filter__hide {
+          display: none;
+        }
+      }
     }
 
     &__title {
@@ -671,7 +686,6 @@
         background: $color1;
       }
     }
-
 
     &__scroll-active {
       .s3d-filter {
